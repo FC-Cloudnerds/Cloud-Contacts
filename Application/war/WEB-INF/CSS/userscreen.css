@@ -1,1 +1,43 @@
 @CHARSET "ISO-8859-1";
+
+html,body,.container{
+	
+	height: 100%;
+	
+
+div
+{
+	border: 1px solid black;
+	
+}
+
+.page-header{
+    margin-top: 0px;
+    padding-bottom: 0px;
+    border-bottom: 0px;
+}
+
+    
+.panel-body
+    {
+        padding-top: 0px;
+    }
+
+
+
+    
+.column1 {
+	background-color: #BDBDBD;
+	
+}
+
+.column2 {
+	background-color: #E0E0E0;
+	
+}
+
+.column3 {
+	background-color: #EEEEEE;
+	
+}
+
