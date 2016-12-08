@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome</title>
+<link rel="stylesheet" type="text/css" href="../CSS/userscreen.css">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<header>
+		<div class="navbar navbar-default navbar-fixed navbar-inverse">
+			<div class="container-fuild">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#example">
+						<span class="icon-bar"> </span> <span class="icon-bar"> </span> <span
+							class="icon-bar"> </span>
+					</button>
+					<a href="userscreen.html" class="navbar-brand"> <span> <img
+							src="../Resource/Image/Appicon.png" style="width: 7%">
+					</span> Cloud Contacts
+					</a>
+				</div>
+				<div class="collapse navbar-collapse pull-right " id="example">
+
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="userscreen.html">Home</a></li>
+						<li><a href="#modal1" data-toggle="modal">Change Password</a></li>
+						<li><button type="submit" class="btn btn-primary navbar-btn">Log
+								Off</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="container-fuild">
+			<div class="row">
+				<div class="col-md-3 column1">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default category-panel">
+								<div class="panel-body">
+
+									<div class="input-group">
+										<span class="input-group-addon" id="basic-addon1"><span
+											class=" glyphicon glyphicon-search"></span></span> <input
+											type="text" class="form-control active"
+											placeholder="Search Category" aria-describedby="basic-addon1">
+									</div>
+									<div class="page-header " style="margin-top: 8px">Category
+									</div>
+									<ul class="list-group category-list-group" style="height: 210px;overflow: auto">
+										<li class="list-group-item active"><span
+											class="deleteimage hidden">
+                                            <img src="../Resource/Image/delete.png" style="width: 7%"></span>
+											All<span class="badge">7</span></li>
+										</ul>
+									</br>
+									<div class="input-group pull-bottom add-category">
+										<span class="input-group-addon add-button" id="basic-addon1">
+                                            <span class=" glyphicon glyphicon-plus"></span>
+                                        </span> 
+                                        <input type="text"
+											class="form-control active" placeholder="Add Category"
+											aria-describedby="basic-addon1">
+									</div>
+									</br>
+									<div class="row">
+										<div class="col-md-12">
+											<button class="btn btn-danger button-delete-category hidden" style="width: 100%">DELETE
+												CATEGORY</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default category-panel">
+								<div class="panel-body">
+
+									<div class="input-group">
+										<span class="input-group-addon" id="basic-addon1"><span
+											class=" glyphicon glyphicon-search"></span></span> <input
+											type="text" class="form-control active"
+											placeholder="Search Contacts" aria-describedby="basic-addon1">
+									</div>
+									<div class="page-header" style="margin-top: 8px">
+										A
+										<ul class="list-group">
+											<li class="list-group-item active">
+												<ul class="nav">
+													<li><img src="../Resource/Image/John.jpeg" width="15%"
+														style="vertical-align: middle; display: inline"
+														class="img-circle img-responsive"> <span
+														style="vertical-align: middle">Alice</span><span
+														class="deleteimage hidden"><img
+															src="../Resource/Image/delete.png" class="pull-right"
+															style="width: 7%; vertical-align: middle; padding-top: 9px"></span>
+													</li>
+												</ul>
+											</li>
+											<li class="list-group-item">
+
+												<ul class="nav">
+													<li><img src="../Resource/Image/nopic.png" width="15%"
+														style="vertical-align: middle; display: inline"
+														class="img-circle img-responsive"> <span
+														style="vertical-align: middle">Andrew Vijay
+															Sylvester</span><span class="deleteimage hidden"><img
+															src="../Resource/Image/delete.png" class="pull-right"
+															style="width: 7%; vertical-align: middle; padding-top: 9px"></span>
+													</li>
+												</ul>
+
+
+											</li>
+											<li class="list-group-item">
+												<ul class="nav">
+													<li><img src="../Resource/Image/nopic.png" width="15%"
+														style="vertical-align: middle; display: inline"
+														class="img-circle img-responsive"> <span
+														style="vertical-align: middle">Aqua</span><span
+														class="deleteimage hidden"><img id="deleteimage"
+															src="../Resource/Image/delete.png" class="pull-right"
+															style="width: 7%; vertical-align: middle; padding-top: 9px"></span>
+													</li>
+												</ul>
+
+											</li>
+										</ul>
+									</div>
+									<div class="page-header"
+										style="margin-top: 8px; padding-bottom: 0px; border-bottom: 0px;">
+										R
+										<ul class="list-group">
+											<li class="list-group-item">
+
+												<ul class="nav">
+													<li><img src="../Resource/Image/nopic.png" width="15%"
+														style="vertical-align: middle; display: inline"
+														class="img-circle img-responsive"> <span
+														style="vertical-align: middle">Raghavendra</span><span
+														class="deleteimage hidden"> <img id="deleteimage"
+															src="../Resource/Image/delete.png" class="pull-right"
+															style="width: 7%; vertical-align: middle; padding-top: 9px"></li>
+												</ul>
+
+											</li>
+										</ul>
+
+										</li>
+										</ul>
+									</div>
+
+									<div class="row">
+										<div class="col-md-12">
+											<button class="btn btn-danger button-delete-category hidden" style="width: 100%">DELETE
+												CONTACT</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="row">
+
+										<div class="col-md-3">
+											<img src="../Resource/Image/john.jpeg" width="100%"
+												style="vertical-align: middle; display: inline"
+												class="img-circle img-responsive">
+										</div>
+
+										<div class="col-md-9" style="vertical-align: middle;">
+											<p class="h1">Alice</p>
+											<p class="h4">Family</p>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-12">
+											<form class="form-horizontal">
+
+												<div class="form-group">
+
+													<label for="inputEmail3" class="col-sm-2 control-label">Mobile</label>
+													<div class="col-sm-10">
+														<input disabled type="text" class="form-control"
+															id="inputEmail3" placeholder="Enter Mobile Number"
+															value="+-017-615-0033">
+													</div>
+												</div>
+
+
+
+												<div class="form-group">
+													<label for="inputPassword3" class="col-sm-2 control-label">LandLine</label>
+													<div class="col-sm-10">
+														<input disabled type="text" class="form-control"
+															id="inputPassword3" placeholder="Enter Landline Number"
+															value="+1 2123-4323">
+													</div>
+												</div>
+
+
+
+
+												<div class="form-group">
+													<label for="inputPassword3" class="col-sm-2 control-label">E-Mail</label>
+													<div class="col-sm-10">
+														<input disabled type="text" class="form-control "
+															id="inputPassword3" placeholder="Enter E-Mail Address"
+															value="alice@gmail.com">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="inputPassword3" class="col-sm-2 control-label">Address</label>
+													<div class="col-sm-10">
+														<input disabled type="text" class="form-control"
+															id="inputPassword3" placeholder="Enter the Address"
+															value="No 31 Broklyn Street NY">
+													</div>
+												</div>
+
+
+											</form>
+
+										</div>
+
+									</div>
+
+
+
+									<div class="row">
+										<div class="col-md-12">
+											<button class="btn btn-info" style="width: 100%">EDIT
+												CONTACT</button>
+										</div>
+									</div>
+									</br>
+
+									<div class="row">
+										<div class="col-md-12">
+											<button class="btn btn-danger" style="width: 100%">DELETE
+												CONTACT</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+
+				</div>
+	</section>
+	<footer>
+		<div class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container-fuild">
+				<p class="navbar-text">&#169; Copyrights Cloud Contacts,2016</p>
+			</div>
+		</div>
+	</footer>
+	<div class="modal fade" id="modal1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title">Reset Password</h3>
+				</div>
+
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="inputUserOldPassword">Current Password</label> <input
+								class="form-control" placeholder="Enter Old Password"
+								type="password" id="inputUserOldPassword"> <label
+								for="inputNewPassword">New Password</label> <input
+								class="form-control" placeholder="Enter Password"
+								type="password" id="inputUserNewPassword"> <label
+								for="inputConfirmNewPassword">Confirm Password</label> <input
+								class="form-control" placeholder="Re-Enter Password"
+								type="password" id="inputConfirmNewPassword">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn btn-danger" data-dismiss="modal">Close</a> <a
+						href="#" class="btn btn-primary" data-dismiss="modal">Submit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript"
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../JS/Application.js"></script>
+
+</body>
+</html>
