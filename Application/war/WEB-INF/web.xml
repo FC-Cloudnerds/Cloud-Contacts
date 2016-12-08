@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<servlet>
-		<servlet-name>Project_Cloud_Contacts</servlet-name>
+		<servlet-name>signup</servlet-name>
 		<servlet-class>com.creative.full.servlet.signupservlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+	<servlet-name>login</servlet-name>
+	<servlet-class>com.creative.full.servlet.loginservlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+	<servlet-name>logoff</servlet-name>
+	<servlet-class>com.creative.full.servlet.logoffservlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
-		<servlet-name>Project_Cloud_Contacts</servlet-name>
+	<servlet-name>login</servlet-name>
+	<url-pattern>/HTML/login</url-pattern>
+	</servlet-mapping>
+	    
+	<servlet-mapping>
+		<servlet-name>signup</servlet-name>
 		<url-pattern>/HTML/signup</url-pattern>
 	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>logoff</servlet-name>
+		<url-pattern>/HTML/logoff</url-pattern>
+	</servlet-mapping>
+	
+
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

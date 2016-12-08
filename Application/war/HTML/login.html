@@ -39,7 +39,7 @@
 		</div>
 	</header>
 
-	<form id="login">
+	<form id="login" action="login" method="post">
         
 		<div class="jumbotron">
             
@@ -71,7 +71,7 @@
 													<td><label for="email">Email: </label></td>
 													<td><div class="input-group">
 															<span class="input-group-addon" id="basic-addon1">@</span>
-															<input type="text" class="form-control"
+															<input type="text" name="txtusername" class="form-control"
 																placeholder="Email" aria-describedby="basic-addon1">
 														</div></td>
 												</tr>
@@ -80,7 +80,7 @@
 													<td><div class="input-group">
 															<span class="input-group-addon" id="basic-addon1"><span
 																class=" glyphicon glyphicon-lock"></span></span> <input
-																type="password" class="form-control"
+																type="password" name="txtpassword" class="form-control"
 																placeholder="Password" aria-describedby="basic-addon1">
 														</div></td>
 												</tr>
@@ -96,7 +96,7 @@
 												</tr>
 												<tr>
 													<td></td>
-													<td><a href="#" class="btn btn-success">Sign In</a> </td>
+													<td><input type="submit" class="btn btn-success" value="Sign In"></td>
 												</tr>
 												<tr>
 													<td class="h6" style="vertical-align: middle">Sign In using</td>
