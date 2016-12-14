@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	
 	<servlet>
 		<servlet-name>signup</servlet-name>
 		<servlet-class>com.creative.full.servlet.signupservlet</servlet-class>
@@ -19,6 +20,13 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-class>com.creative.full.servlet.logoffservlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+	<servlet-name>changepassword</servlet-name>
+	<servlet-class>com.creative.full.servlet.updatepasswordservlet</servlet-class>
+	</servlet>
+	
+	
+	
 	<servlet-mapping>
 	<servlet-name>login</servlet-name>
 	<url-pattern>/HTML/login</url-pattern>
@@ -28,10 +36,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>signup</servlet-name>
 		<url-pattern>/HTML/signup</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
 		<servlet-name>logoff</servlet-name>
 		<url-pattern>/HTML/logoff</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>changepassword</servlet-name>
+		<url-pattern>/HTML/changepassword</url-pattern>
 	</servlet-mapping>
 	
 

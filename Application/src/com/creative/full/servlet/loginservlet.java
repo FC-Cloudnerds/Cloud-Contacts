@@ -26,10 +26,9 @@ public class loginservlet extends HttpServlet {
 		try {
 			emobilenumber=(String) datastore.get(key).getProperty("Mobile Number");
 			epassword=(String) datastore.get(key).getProperty("Password");
-//			System.out.println(epassword);
-//			System.out.println(emobilenumber);
+			System.out.println(epassword);
+			System.out.println(emobilenumber);
 		} catch (EntityNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(amobilenumber.toLowerCase().equals(emobilenumber.toLowerCase()) && apassword.equals(epassword))
@@ -45,6 +44,6 @@ public class loginservlet extends HttpServlet {
 		//System.out.println("Full Name : "+req.getParameter("txtusername"));
 		//System.out.println("email : "+req.getParameter("txtpassword"));
 		
-		resp.getWriter().println("<html><body><h1>Success from login servlet!Check the server console</h1></body></html>");
+		//resp.getWriter().println("<html><body><h1>Success from login servlet!Check the server console</h1></body></html>");
 	}
 }
