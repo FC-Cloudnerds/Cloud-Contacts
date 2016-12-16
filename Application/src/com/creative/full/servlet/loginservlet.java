@@ -20,20 +20,26 @@ public class loginservlet extends HttpServlet {
 		String apassword = req.getParameter("txtpassword");
 		String emobilenumber=null;
 		String epassword=null;
+		String username =null;
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
 		Key key = KeyFactory.createKey("user", amobilenumber);
 		try {
 			emobilenumber=(String) datastore.get(key).getProperty("Mobile Number");
 			epassword=(String) datastore.get(key).getProperty("Password");
-			System.out.println(epassword);
-			System.out.println(emobilenumber);
+			username =(String) datastore.get(key).getProperty("Full name");
+			//System.out.println(epassword);
+			//System.out.println(emobilenumber);
 		} catch (EntityNotFoundException e) {
 			e.printStackTrace();
 		}
 		if(amobilenumber.toLowerCase().equals(emobilenumber.toLowerCase()) && apassword.equals(epassword))
 		{
-			resp.sendRedirect("/HTML/userscreen.html");
+			
+			HttpSession session = req.getSession();
+			session.setAttribute("username",username );
+			session.setAttribute("userid", amobilenumber);
+			resp.sendRedirect("/HTML/userscreen.jsp");
 			
 		}
 		else

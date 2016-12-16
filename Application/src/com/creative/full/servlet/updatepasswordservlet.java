@@ -20,20 +20,22 @@ public class updatepasswordservlet extends HttpServlet {
 		String newpassword = req.getParameter("passnewpassword");
 		String newrepassword=req.getParameter("passnewrepassword");
 		String eoldpassword=null;
+		String keyid = null;
+		//System.out.println(aoldpassword);
+		//System.out.println(newpassword);
 		
-		System.out.println(aoldpassword);
-		System.out.println(newpassword);
-		
-		
+		HttpSession session = req.getSession();
+		keyid = (String) session.getAttribute("userid");
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
-		Key key = KeyFactory.createKey("user", "12345");
-		Entity user = new Entity("user", "12345");
+		Key key = KeyFactory.createKey("user", keyid);
+		Entity user =null;
 		try {
-			eoldpassword=(String) datastore.get(key).getProperty("Password");
+			user = datastore.get(key);
+			eoldpassword=(String) user.getProperty("Password");
 			
-			System.out.println(aoldpassword);
-			System.out.println(newpassword);
+//			System.out.println(aoldpassword);
+//			System.out.println(newpassword);
 		} catch (EntityNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,9 +46,15 @@ public class updatepasswordservlet extends HttpServlet {
 			datastore.put(user);
 			
 		}
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		resp.getWriter().println("Successfully password changed");
-		System.out.println("Full Name : "+req.getParameter("txtusername"));
-		System.out.println("email : "+req.getParameter("txtpassword"));
+//		System.out.println("Full Name : "+req.getParameter("txtusername"));
+//		System.out.println("email : "+req.getParameter("txtpassword"));
 		
 		}
 }

@@ -14,7 +14,12 @@ import com.google.appengine.api.datastore.KeyFactory;
 @SuppressWarnings("serial")
 public class logoffservlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-					resp.sendRedirect("/HTML/login.html");
+					
+		HttpSession session = req.getSession();
+		session.removeAttribute("username");
+		session.removeAttribute("userid");
+		session.invalidate();
+		resp.sendRedirect("/HTML/login.html");
 			
 		}
 }
