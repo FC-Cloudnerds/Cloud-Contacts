@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+.font-color{
+	color:White;
+}
+.table-borderless td{
+	border: none !important;
+}
+.add-border{
+	border-left:4px solid black; 
+}
+.img-orient{
+	width:10%;
+}

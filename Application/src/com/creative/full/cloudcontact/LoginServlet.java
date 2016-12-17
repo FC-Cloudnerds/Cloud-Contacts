@@ -1,0 +1,54 @@
+package com.creative.full.cloudcontact;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
+public class LoginServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		res.setContentType("text/html");
+
+		String dbemail = null, dbpass = null, email, pass, username = null;
+
+		email = req.getParameter("txtemail");
+		pass = req.getParameter("txtpassword");
+		Key key = KeyFactory.createKey("User", email);
+
+		// System.out.println("User key is : " + key);
+		try {
+			Entity e = ds.get(key);
+			dbemail = e.getProperty("Email").toString();
+			dbpass = e.getProperty("Password").toString();
+			username = (String) ds.get(key).getProperty("Full name");
+
+		} catch (EntityNotFoundException e) {
+			e.printStackTrace();
+		}
+		if (email.toLowerCase().equals(dbemail.toLowerCase()) && pass.equals(dbpass)) {
+
+			HttpSession session = req.getSession();
+			session.setAttribute("username", username);
+			session.setAttribute("userid", email);
+			res.sendRedirect("/JSP/userscreen.jsp");
+
+		} else {
+			System.out.println("Inside true");
+
+		}
+	}
+}
