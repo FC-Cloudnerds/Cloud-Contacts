@@ -1,9 +1,8 @@
 @CHARSET "ISO-8859-1";
-
-.table-borderless td{
+.table-borderless td {
 	border: none !important;
 }
-.img-orient{
-	width:10%;
-}
 
+.img-orient {
+	width: 10%;
+}

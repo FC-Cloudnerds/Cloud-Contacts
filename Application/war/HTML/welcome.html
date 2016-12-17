@@ -3,20 +3,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="icon" type="image/gif/png" href="../Resource/Image/Appicon.png">
+<link rel="icon" type="image/gif/png"
+	href="../Resource/Image/Appicon.png">
 <title>Cloud Contacts</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../CSS/contactus.css" />
 
 </head>
 <body>
-    <script type="text/javascript"
-		src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript"
-		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <header>
+
+	<header>
 		<div class="navbar navbar-default navbar-fixed navbar-inverse">
 			<div class="container-fuild">
 				<div class="navbar-header">
@@ -25,7 +22,7 @@
 						<span class="icon-bar"> </span> <span class="icon-bar"> </span> <span
 							class="icon-bar"> </span>
 					</button>
-					<a href="userscreen.html" class="navbar-brand"> <span> <img
+					<a href="../JSP/userscreen.jsp" class="navbar-brand"> <span> <img
 							src="../Resource/Image/Appicon.png" style="width: 7%">
 					</span> Cloud Contacts
 					</a>
@@ -34,15 +31,119 @@
 
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="welcome.html">Home</a></li>
-						
-						<li><span><a href ="login.html"><button type="button" class="btn btn-primary navbar-btn">Log In</button></a></span></li>
+						<li><a href="#modal2" data-toggle="modal">Contact Us</a></li>
+						<li><span><a href="login.html"><button
+										type="button" class="btn btn-primary navbar-btn">Log
+										In</button></a></span></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		
-	</header>
 
-	
+	</header>
+	<div class="modal fade" id="modal2" role="dialog" data-keyboard="false"
+		data-backdrop="static">
+		<div class="modal-dialog modal-lg">
+			<form method="POST">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h3 class="modal-title">Contact Us</h3>
+						<div id="outputdiv">
+							<div class="success" style="color: green"></div>
+							<div class="ajaxprogress"
+								style="display: none; text-align: center">
+								<h3>Please Wait...</h3>
+								<img src="../Resource/Image/loading.gif" alt="loading">
+							</div>
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-6">
+									<h2 align="center">
+										<u>MAIL</u>
+									</h2>
+								</div>
+								<div class="col-md-4 col-md-offset-2">
+									<h2 align="center">
+										<u>ELSEWHERE</u>
+									</h2>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<div class="table-responsive">
+											<table class="table table-borderless">
+												<tbody>
+													<tr>
+														<td><div class="input-group">
+																<span class="input-group-addon" id="basic-addon1"><span
+																	class=" glyphicon glyphicon-user"></span></span> <input
+																	type="text" class="form-control ValidateText txtfullname"
+																	placeholder="Enter Full Name"
+																	aria-describedby="basic-addon1" name="txtfullname"
+																	autofocus="autofocus">
+															</div></td>
+													</tr>
+													<tr>
+
+														<td><div class="input-group">
+																<span class="input-group-addon" id="basic-addon1">@</span>
+																<input type="text" class="form-control txtemail"
+																	placeholder="Enter Email"
+																	aria-describedby="basic-addon1" name="txtemail">
+															</div></td>
+													</tr>
+													<tr>
+														<td colspan="2"><div class="form-group">
+																<textarea class="form-control txtmessage" rows="5"
+																	placeholder="Enter Your Message" name="txtmessage"></textarea>
+															</div></td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-md-4  col-md-offset-2">
+									<a href="https:/www.facebook.com" data-toggle="tooltip"
+										data-placement="bottom" title="Facebook"><img
+										src="../Resource/Image/icon-facebook.png" alt="Facebook"
+										class="img-circle  img-orient  img-inline">Facebook</a><br>
+									<br> <a href="https:/www.twitter.com"
+										data-toggle="tooltip" data-placement="bottom" title="Twitter"><img
+										src="../Resource/Image/icon-twitter.jpg" alt="Twitter"
+										class=" img-circle  img-orient">Twitter</a><br> <br>
+									<a href="https:/www.instagram.com" data-toggle="tooltip"
+										data-placement="bottom" title="Instagram"><img
+										src="../Resource/Image/icon-instagram.jpg" alt="Instagram"
+										class=" img-circle  img-orient">Instagram</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+						<input type="submit" value="Submit"
+							class="btn btn-primary submitClick">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+	<script data-brackets-id='3676' type="text/javascript"
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 	<script src="../JS/Application.js" type="text/javascript"></script> -->
+	<script type="text/javascript" src="../JS/contactus.js"></script>
 </body>
 </html>
