@@ -28,7 +28,7 @@ public class ResetPasswordServlet extends HttpServlet {
 		keyid = (String) session.getAttribute("userid");
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
-		Key key = KeyFactory.createKey("user", keyid);
+		Key key = KeyFactory.createKey("User", keyid);
 		Entity user =null;
 		try {
 			user = datastore.get(key);

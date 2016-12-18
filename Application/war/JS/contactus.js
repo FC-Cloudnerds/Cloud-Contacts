@@ -9,6 +9,7 @@ $(document)
 						$(".txtemail").val("");
 						$(".txtmessage").val("");
 					});
+					
 					$('.submitClick')
 							.click(
 									function(e) {
@@ -63,6 +64,8 @@ $(document)
 //																	.val("");
 //															$(".txtemail").val(
 //																	"");
+															$('.ValidateText').val("");
+															$('.ValidateEmail').val("");
 															$(".txtmessage")
 																	.val("");
 														}

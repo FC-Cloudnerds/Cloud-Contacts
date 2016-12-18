@@ -178,8 +178,6 @@
 								<div class="col-md-12">
 									<form class="form-horizontal">
 
-
-
 										<div class="form-group">
 											<label for="inputPassword3" class="col-sm-2 control-label">Mobile</label>
 											<div class="col-sm-10">
@@ -188,8 +186,6 @@
 											</div>
 										</div>
 
-
-
 										<div class="form-group">
 											<label for="inputPassword3" class="col-sm-2 control-label">LandLine</label>
 											<div class="col-sm-10">
@@ -197,9 +193,6 @@
 													placeholder="Enter Landline Number" value="">
 											</div>
 										</div>
-
-
-
 
 										<div class="form-group">
 											<label for="inputPassword3" class="col-sm-2 control-label">E-Mail</label>
@@ -216,16 +209,10 @@
 													placeholder="Enter the Address" value="">
 											</div>
 										</div>
-
-
 									</form>
-
 								</div>
-
 							</div>
-
 							</br>
-
 							<div class="row">
 								<div class="col-md-12">
 									<button class="btn btn-primary addcontact" style="width: 100%">ADD
@@ -238,11 +225,7 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
-
-
 		</div>
 	</section>
 	<footer>
@@ -311,7 +294,6 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h3 class="modal-title">Contact Us</h3>
 						<div id="outputdiv">
-
 							<div class="message"></div>
 							<div class="ajaxprogress2"
 								style="display: none; text-align: center">

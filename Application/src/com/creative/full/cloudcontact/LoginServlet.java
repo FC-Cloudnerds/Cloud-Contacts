@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
 		pass = req.getParameter("txtpassword");
 		Key key = KeyFactory.createKey("User", email);
 
-		// System.out.println("User key is : " + key);
 		try {
 			Entity e = ds.get(key);
 			dbemail = e.getProperty("Email").toString();
@@ -39,16 +38,15 @@ public class LoginServlet extends HttpServlet {
 		} catch (EntityNotFoundException e) {
 			e.printStackTrace();
 		}
-		if (email.toLowerCase().equals(dbemail.toLowerCase()) && pass.equals(dbpass)) {
-
-			HttpSession session = req.getSession();
-			session.setAttribute("username", username);
-			session.setAttribute("userid", email);
-			res.sendRedirect("/JSP/userscreen.jsp");
-
-		} else {
-			System.out.println("Inside true");
-
+		if (email.toLowerCase().equals(dbemail.toLowerCase())) {
+			if (pass.equals(dbpass) == true) {
+				res.getWriter().print("success");
+				HttpSession session = req.getSession();
+				session.setAttribute("username", username);
+				session.setAttribute("userid", email);
+			} else {
+				res.getWriter().print("incorrect_pass");
+			}
 		}
 	}
 }
