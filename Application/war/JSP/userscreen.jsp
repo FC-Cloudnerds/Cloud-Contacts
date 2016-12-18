@@ -264,8 +264,8 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h3 class="modal-title">Reset Password</h3>
 						<div id="outputdiv">
-							<div class="success" style="color: green"></div>
-							<div class="ajaxprogress"
+							<div class="success1"></div>
+							<div class="ajaxprogress1"
 								style="display: none; text-align: center">
 								<h3>Please Wait...</h3>
 								<img src="../Resource/Image/loading.gif" alt="loading">
@@ -276,22 +276,21 @@
 					<div class="modal-body">
 						<!-- 					<form > -->
 						<div class="form-group">
-							<label for="inputUserOldPassword">Current Password</label> <input
+							<label for="inputUserOldPassword">Current Password</label> <input autofocus="autofocus"
 								id="oldpassword" class="form-control txtoldpassword"
 								placeholder="Enter Old Password" name="passoldpassword"
-								type="password" id="inputUserOldPassword" maxlength="8"
-								autofocus="autofocus"> <label for="inputNewPassword">New
-								Password</label> <input id="newpassword"
-								class="form-control txtnewpassword" placeholder="Enter Password"
-								name="passnewpassword" type="password" id="inputUserNewPassword"
-								maxlength="8"> <label for="inputConfirmNewPassword">Confirm
-								Password</label> <input id="newrepassword"
-								class="form-control txtconfirmpassword"
+								type="password" maxlength="8" > <label
+								for="inputNewPassword">New Password</label> <input
+								id="newpassword" class="form-control txtnewpassword"
+								placeholder="Enter Password" name="passnewpassword"
+								type="password" maxlength="8"> <label
+								for="inputConfirmNewPassword">Confirm Password</label> <input
+								id="newrepassword" class="form-control txtconfirmpassword"
 								placeholder="Re-Enter Password" name="passnewrepassword"
-								type="password" id="inputConfirmNewPassword" maxlength="8">
+								type="password" maxlength="8">
 						</div>
 						<div class="modal-footer">
-							<a href="#" class="btn btn-danger" data-dismiss="modal">Close</a><a
+							<a href="#" class="btn btn-danger btnclose1" data-dismiss="modal">Close</a><a
 								id="submit" class="btn btn-primary">Submit</a>
 						</div>
 
@@ -312,8 +311,9 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h3 class="modal-title">Contact Us</h3>
 						<div id="outputdiv">
-							<div class="success" style="color: green"></div>
-							<div class="ajaxprogress"
+
+							<div class="message"></div>
+							<div class="ajaxprogress2"
 								style="display: none; text-align: center">
 								<h3>Please Wait...</h3>
 								<img src="../Resource/Image/loading.gif" alt="loading">
@@ -395,7 +395,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+						<a href="#" class="btn btn-danger btnclose2" data-dismiss="modal">Close</a>
 						<input type="submit" value="Submit"
 							class="btn btn-primary submitClick">
 					</div>
@@ -411,6 +411,7 @@
 	<script src="../JS/resetpass.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../JS/Application.js"></script>
 	<script type="text/javascript" src="../JS/contactus.js"></script>
+	<script type="text/javascript" src="../JS/resetpass.js"></script>
 
 </body>
 </html>

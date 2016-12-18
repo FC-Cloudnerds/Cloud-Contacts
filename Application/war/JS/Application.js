@@ -150,38 +150,6 @@ $('.category-panel').on('click', '.list-group-item', function() {
 
 });
 
-$('#submit')
-		.click(
-				function() {
-					$('.ajaxprogress').show();
-
-					var oldpassword = $('#oldpassword').val();
-					var newpassword = $('#newpassword').val();
-					var newrepassword = $('#newrepassword').val();
-					$
-							.ajax({
-								type : "POST",
-								url : "changepassword",
-								data : "passoldpassword=" + oldpassword
-										+ "&passnewpassword=" + newpassword
-										+ "&passnewrepassword=" + newrepassword,
-								success : function(datas) {
-									$('.ajaxprogress').hide();
-									$('.success')
-											.css('display', 'block')
-											.html(
-													"<img src=\"../Resource/Image/successtick.png\" alt=\"successtick\" style=\"width: 10%\"> "
-															+ datas)
-											.delay(1000).fadeOut();
-
-								},
-								error : function(e) {
-									alert("error message");
-								}
-
-							});
-
-				});
 
 $('.editButton').click(function() {
 

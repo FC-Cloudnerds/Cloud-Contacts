@@ -7,7 +7,6 @@
 
 <link rel="icon" type="image/gif/png"
 	href="../Resource/Image/Appicon.png">
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../CSS/signup.css">
@@ -19,15 +18,15 @@
 	<header>
 		<div class="navbar navbar-default navbar-fixed navbar-inverse"
 			style="margin-bottom: 0px">
-			<div class="container-fuild">
+			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse"
 						data-target="#example">
 						<span class="icon-bar"> </span> <span class="icon-bar"> </span> <span
 							class="icon-bar"> </span>
 					</button>
-					<a href="../JSP/userscreen.jsp" class="navbar-brand"> <span> <img
-							src="../Resource/Image/Appicon.png" style="width: 7%">
+					<a href="../JSP/userscreen.jsp" class="navbar-brand"> <span>
+							<img src="../Resource/Image/Appicon.png" style="width: 7%">
 					</span> Cloud Contacts
 					</a>
 				</div>
@@ -45,113 +44,165 @@
 		</div>
 
 	</header>
-	<form action="signup" method="post">
-		<div class="jumbotron">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-7">
-						<p class="h2">
-							<strong>CLOUD CONTACT</strong>
-						</p>
-						<h5>
-							<strong> Store Contacts, <br> optimise your work,
-								and foster<br> better Contact retrieval.
-							</strong>
-						</h5>
-						<h5>Cloud Contact is a cloud based solution that helps you
-							Store your contacts</h5>
+	<section>
+
+
+		<div class="modal fade" id="success" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						
+						<h4 class="modal-title"><img src="../Resource/Image/successtick.png" alt="Success Image"
+							width="7%">&nbsp;Success</h4>
 					</div>
-					<div class="col-md-5">
-						<div class="table-responsive">
-							<table class="table table-borderless">
-								<tbody>
-									<tr>
-										<td><div class="input-group">
-												<span class="input-group-addon" id="basic-addon1"><span
-													class=" glyphicon glyphicon-user"></span></span> <input
-													type="text" class="form-control ValidateText txtfullname" placeholder="Enter Full Name"
-													aria-describedby="basic-addon1" name="txtfullname"
-													autofocus="autofocus">
-											</div></td>
-									</tr>
-									<tr>
-										<td><div class="input-group">
-												<span class="input-group-addon" id="basic-addon1">@</span> <input
-													type="text" class="form-control txtemail " placeholder="Enter Email"
-													aria-describedby="basic-addon1" name="txtemail">
-											</div></td>
-									</tr>
-									<tr>
-										<td><div class="input-group">
-												<span class="input-group-addon" id="basic-addon1"><span
-													class="glyphicon glyphicon-earphone"></span></span> <input
-													type="text" class="form-control ValidateNum txtmobileno" placeholder="Enter Mobile No"
-													aria-describedby="basic-addon1" name="txtmobileno"
-													maxlength="10">
-											</div></td>
-									</tr>
-									<tr>
-										<td><div class="input-group">
-												<span class="input-group-addon" id="basic-addon1"><span
-													class=" glyphicon glyphicon-lock"></span></span> <input
-													type="password" class="form-control txtpassword" placeholder="Enter Password"
-													aria-describedby="basic-addon1" maxlength="8"
-													name="txtpassword">
-											</div></td>
-									</tr>
-									<tr>
-										<td><div class="input-group">
-												<span class="input-group-addon" id="basic-addon1"><span
-													class="glyphicon glyphicon-lock"></span></span> <input
-													type="password" class="form-control txtrepassword"
-													placeholder="Enter Re Password" aria-describedby="basic-addon1"
-													maxlength="8" name="txtrepassword">
-											</div></td>
-									</tr>
-									<tr>
-										<td>
-											<!-- Example single danger button --> <select
-											class="form-control ddbsequ" id="sel1" name="ddbsequ">
-												<option>--- Select ---</option>
-												<option>Who is your favorite actor?</option>
-												<option>What is your pet's name?</option>
-												<option>Who is your favorite tacher's name?</option>
-												<option>What was the name of your primary school?</option>
-												<option>What time of the day were you born?</option>
-										</select>
+					<div class="modal-body">
+						<span style="color: green;"> <b>Thanks to join us..</b>
+						</span>
+					</div>
 
-										</td>
-									</tr>
-									<tr>
-										<td><div class="input-group">
-												<span class="input-group-addon" id="basic-addon1"><span
-													class="glyphicon glyphicon-pencil"></span></span> <input
-													type="text" class="form-control txtanswer" placeholder="Enter Answer"
-													aria-describedby="basic-addon1" name="txtanswer">
-											</div></td>
-									</tr>
-
-									<tr>
-										<td><span class="h6">By clicking 'Create account',
-												you agree to the Terms of Service and Privacy Policy.</span></td>
-									</tr>
-									<tr>
-										<td><input type="submit" class="btn btn-success btnsubmit"
-											name="btnsubmit" value="Create Account"></td>
-
-									</tr>
-
-								</tbody>
-							</table>
-
-						</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="error" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						
+						<h4 class="modal-title"><img src="../Resource/Image/error.png" alt="Error Image"
+							width="7%">&nbsp;Error</h4>
+					</div>
+					<div class="modal-body">
+						<span style="color: red;"> <b>Fill all the data..</b>
+						</span>
 					</div>
 				</div>
 			</div>
 		</div>
 
-	</form>
+		<form action="signup" method="post" class="signup">
+			<div class="jumbotron">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-7">
+							<p class="h2">
+								<strong>CLOUD CONTACT</strong>
+							</p>
+							<h5>
+								<strong> Store Contacts, <br> optimise your work,
+									and foster<br> better Contact retrieval.
+								</strong>
+							</h5>
+							<h5>Cloud Contact is a cloud based solution that helps you
+								Store your contacts</h5>
+						</div>
+						<div class="col-md-5">
+							<div class="table-responsive">
+								<table class="table table-borderless">
+									<tbody>
+										<tr>
+											<td><div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span
+														class=" glyphicon glyphicon-user"></span></span> <input
+														type="text" class="form-control ValidateText txtfullname"
+														placeholder="Enter Full Name"
+														aria-describedby="basic-addon1" name="txtfullname"
+														autofocus="autofocus">
+												</div></td>
+										</tr>
+										<tr>
+											<td><div class="input-group">
+													<span class="input-group-addon" id="basic-addon1">@</span>
+													<input type="text" class="form-control txtemail "
+														placeholder="Enter Email" aria-describedby="basic-addon1"
+														name="txtemail">
+												</div></td>
+										</tr>
+										<tr>
+											<td><div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span
+														class="glyphicon glyphicon-earphone"></span></span> <input
+														type="text" class="form-control ValidateNum txtmobileno"
+														placeholder="Enter Mobile No"
+														aria-describedby="basic-addon1" name="txtmobileno"
+														maxlength="10">
+												</div></td>
+										</tr>
+										<tr>
+											<td><div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span
+														class=" glyphicon glyphicon-lock"></span></span> <input
+														type="password" class="form-control txtpassword"
+														placeholder="Enter Password"
+														aria-describedby="basic-addon1" maxlength="8"
+														name="txtpassword">
+												</div></td>
+										</tr>
+										<tr>
+											<td><div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span
+														class="glyphicon glyphicon-lock"></span></span> <input
+														type="password" class="form-control txtrepassword"
+														placeholder="Enter Re Password"
+														aria-describedby="basic-addon1" maxlength="8"
+														name="txtrepassword">
+												</div></td>
+										</tr>
+										<tr>
+											<td>
+												<!-- Example single danger button --> <select
+												class="form-control ddbsequ" id="sel1" name="ddbsequ">
+													<option>--- Select ---</option>
+													<option>Who is your favorite actor?</option>
+													<option>What is your pet's name?</option>
+													<option>Who is your favorite tacher's name?</option>
+													<option>What was the name of your primary school?</option>
+													<option>What time of the day were you born?</option>
+											</select>
 
+											</td>
+										</tr>
+										<tr>
+											<td><div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span
+														class="glyphicon glyphicon-pencil"></span></span> <input
+														type="text" class="form-control txtanswer"
+														placeholder="Enter Answer" aria-describedby="basic-addon1"
+														name="txtanswer">
+												</div></td>
+										</tr>
+
+										<tr>
+											<td><span class="h6">By clicking 'Create
+													account', you agree to the Terms of Service and Privacy
+													Policy.</span></td>
+										</tr>
+										<tr>
+											<td><input type="submit"
+												class="btn btn-success btnsubmit" name="btnsubmit"
+												value="Create Account"></td>
+
+										</tr>
+
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</section>
+	<footer>
+		<div class="navbar navbar-inverse navbar-fixed-bottom">
+			<div class="container-fuild">
+				<p class="navbar-text">&#169; Copyrights Cloud Contacts,2016</p>
+			</div>
+		</div>
+	</footer>
 	<!-- Latest compiled and minified JavaScript -->
 	<script
 		src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
