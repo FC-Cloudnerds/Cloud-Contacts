@@ -36,11 +36,11 @@ public class SignupServlet extends HttpServlet {
 			user.setProperty("Answer", ans);
 
 			ds.put(user);
-			res.getWriter().print("Successfully data added..");
-			res.sendRedirect("/HTML/login.html");
+		res.getWriter().print("Successfully data added..");
+//			res.sendRedirect("/HTML/login.html");
 		}
-		else{
-			res.getWriter().print("Fill all data..");
-		}
+//		else{
+//			res.getWriter().print("Fill all data..");
+//		}
 	}
 }

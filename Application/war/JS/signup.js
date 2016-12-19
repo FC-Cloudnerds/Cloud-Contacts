@@ -126,27 +126,45 @@ $(document)
 										e.preventDefault();
 										name = $('.txtfullname').val();
 										email = $('.txtemail').val();
-										mobbile = $('.txtmobileno').val();
+										mobile = $('.txtmobileno').val();
 										password = $('.txtpassword').val();
 										repassword = $('.txtrepassword').val();
 										securityQue = $('.ddbsequ').val();
 										answer = $('.txtanswer').val();
-										if (name === "" || email === ""
-												|| mobile === ""
-												|| password === ""
-												|| repassword === ""
-												|| secqurityQue === ""
-												|| answer === "") {
+										if (name == "" || email == ""
+												|| mobile == ""
+												|| password == ""
+												|| repassword == ""
+												|| secqurityQue == ""
+												|| answer == "") {
 
-											 $('#error').modal('show');
+											$('#error').modal('show');
 										} else {
-											// $('.signup').submit().delay(5000);
-											// // set timout
-											$(this).delay(5000);
-//											setTimeout($('.signup').submit(),
-//													5000);
-											$('#success').modal('show');
+											$
+													.ajax({
+														type : "POST",
+														url : "signup",
+														data : "txtfullname="
+																+ name
+																+ "&txtemail="
+																+ email
+																+ "&txtmobileno="
+																+ mobile
+																+ "&txtpassword="
+																+ password
+																+ "&ddbsequ="
+																+ securityQue
+																+ "&txtanswer="
+																+ answer,
+														success : function(e) {
+															$('#success').modal('show');															
+														},
+														error : function(e) {
+															
+														},
+													});
 										}
+									
 
 									});
 				});

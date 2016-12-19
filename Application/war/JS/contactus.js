@@ -1,15 +1,23 @@
 $(document)
 		.ready(
 				function(e) {
+					$(".txtmessage").css("background-color", "");
+					$(".txtfullname").css("background-color", "");
+					$(".txtemail").css("background-color", "");
+					
 					$('.btnclose2').click(function() {
 						$(".txtmessage").val("");
 					});
-					$('.btnclose1').click(function() {
+					$('.btnclose1').click(function(e) {
+						e.preventDefault();
 						$(".txtfullname").val("");
 						$(".txtemail").val("");
 						$(".txtmessage").val("");
+//						$(".txtmessage").css("background-color", "");
+//						$(".txtfullname").css("background-color", "");
+//						$(".txtemail").css("background-color", "");
 					});
-					
+
 					$('.submitClick')
 							.click(
 									function(e) {
@@ -19,16 +27,13 @@ $(document)
 										var mess = $(".txtmessage").val();
 										if (fname === "" || email === ""
 												|| mess === "") {
-											//alert("Fill all the data..");
-										$('.message')
-											.css(
-													'display',
-													'block')
-											.html(
-													"<img src=\"../Resource/Image/error.png\" alt=\"error\" style=\"width: 5%\">&nbsp;<font color='red'><b>Fill all the data..</b></font> ")
-											.delay(1000)
-											.fadeOut();
-											
+											// alert("Fill all the data..");
+											$('.message')
+													.css('display', 'block')
+													.html(
+															"<img src=\"../Resource/Image/error.png\" alt=\"error\" style=\"width: 5%\">&nbsp;<font color='red'><b>Fill all the data..</b></font> ")
+													.delay(1000).fadeOut();
+
 										} else {
 											$('.ajaxprogress2').show();
 											$
@@ -42,7 +47,7 @@ $(document)
 																+ "&txtmessage="
 																+ mess,
 														success : function(data) {
-															//alert(data);
+															// alert(data);
 
 															$('.ajaxprogress2')
 																	.hide();
@@ -52,7 +57,8 @@ $(document)
 																			'block')
 																	.html(
 																			"<img src=\"../Resource/Image/successtick.png\" alt=\"successtick\" style=\"width: 5%\"><font color='green'><b>"
-																					+ data + "</b></font>")
+																					+ data
+																					+ "</b></font>")
 																	.delay(1000)
 																	.fadeOut();
 														},
@@ -60,12 +66,14 @@ $(document)
 															alert("Error..");
 														},
 														complete : function() {
-//															$(".txtfullname")
-//																	.val("");
-//															$(".txtemail").val(
-//																	"");
-															$('.ValidateText').val("");
-															$('.ValidateEmail').val("");
+															// $(".txtfullname")
+															// .val("");
+															// $(".txtemail").val(
+															// "");
+															$('.ValidateText')
+																	.val("");
+															$('.ValidateEmail')
+																	.val("");
 															$(".txtmessage")
 																	.val("");
 														}
@@ -98,7 +106,7 @@ $(document)
 									function() {
 										var email = $(this).val();
 										var expression = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-										if (email === "") {
+										if (email == "") {
 											$(this).focus();
 											$(this).css("background-color",
 													"#ffb3b3");

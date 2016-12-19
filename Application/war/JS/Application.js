@@ -1,7 +1,99 @@
 $(document)
 		.ready(
 				function() {
-					alert("load over");
+				//	alert("load over");
+					$('.ValidateNum')
+					.keypress(
+							function(keycode) {
+								if ((keycode.which > 47 && keycode.which < 58)
+										|| (keycode.which == 46 || keycode.which == 8)
+										|| (keycode.which == 9)) {
+									return true;
+								} else {
+									return false;
+								}
+							});
+
+					$('#txtcontactname').keypress(
+							function(keycode) {
+								if ((keycode.which > 47 && keycode.which < 58)
+										|| keycode.which == 13) {
+									return false;
+								} else {
+									return true;
+								}
+							});
+					$('#txtcontactname').focusout(function() {
+						name = $(this).val();
+						if (name === "") {
+							$(this).focus();
+							$(this).css("background-color", "#ffb3b3");
+						} else {
+							$(this).css("background-color", "");
+						}
+					});
+					$('.category_dropdown').focusout(function() {
+						name = $(this).val();
+						alert(name);
+						if (name == "Category") {
+							$(this).focus();
+							$(this).css("background-color", "#ffb3b3");
+						} else {
+							$(this).css("background-color", "");
+						}
+					});
+					$('#inputMobile').focusout(function() {
+						name = $(this).val();
+						if (name === "") {
+							$(this).focus();
+							$(this).css("background-color", "#ffb3b3");
+						} else {
+							$(this).css("background-color", "");
+						}
+					});
+					$('#inputLandline').focusout(function() {
+						name = $(this).val();
+						if (name === "") {
+							$(this).focus();
+							$(this).css("background-color", "#ffb3b3");
+						} else {
+							$(this).css("background-color", "");
+						}
+					});
+					$('#inputEmail')
+							.focusout(
+									function() {
+										email = $(this).val();
+										var expression = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+										if (email === "") {
+											$(this).focus();
+											$(this).css("background-color",
+													"#ffb3b3");
+										} else {
+											$(this).css("background-color", "");
+										}
+										if (expression.test(email) === false) {
+											$(this).focus();
+											$(this).css("background-color",
+													"#ffb3b3");
+											$(this).attr("placeholder",
+													"Enter Valid Email Id");
+											$(this).val("");
+										} else {
+											$(this).css("background-color", "");
+											$(this).attr("placeholder",
+													"Enter Email Id");
+										}
+									});
+					$('#inputAddress').focusout(function() {
+						name = $(this).val();
+						if (name === "") {
+							$(this).focus();
+							$(this).css("background-color", "#ffb3b3");
+						} else {
+							$(this).css("background-color", "");
+						}
+					});
 					var categorySelectCount = 0;
 					var contactSelectCount = 0;
 
@@ -150,7 +242,6 @@ $('.category-panel').on('click', '.list-group-item', function() {
 
 });
 
-
 $('.editButton').click(function() {
 
 	$('.addcontact').addClass('hidden');
@@ -186,8 +277,11 @@ $('.addcontact')
 					var varLandline = $('#inputLandline').val();
 					var varEmail = $('#inputEmail').val();
 					var varAddress = $('#inputAddress').val();
-
-					if (varName != "" && varMobile != "" && varLandline != ""
+					if (varName == "" || varMobile == ""|| varLandline == ""
+						|| varEmail == "" || varAddress == "") {
+						 $('#error').modal('show');
+					
+					}else if (varName != "" && varMobile != "" && varLandline != ""
 							&& varEmail != "" && varAddress != "") {
 
 						var tstring = $('<li class="list-group-item"><ul class="nav "><li><img src=\"'

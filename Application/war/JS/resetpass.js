@@ -1,10 +1,12 @@
 $(document)
 		.ready(
 				function(e) {
-					$('.btnclose1').click(function() {
+					$('.btnclosereset').click(function() {
 						$(".txtoldpassword").val("");
 						$(".txtnewpassword").val("");
 						$(".txtconfirmpassword").val("");
+						$('.txtoldpassword').css(
+								"background-color", "");
 						$('.txtnewpassword').css(
 								"background-color", "");
 						$('.txtconfirmpassword').css(

@@ -244,7 +244,6 @@
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h3 class="modal-title">Reset Password</h3>
 						<div id="outputdiv">
 							<div class="success1"></div>
@@ -257,7 +256,6 @@
 					</div>
 
 					<div class="modal-body">
-						<!-- 					<form > -->
 						<div class="form-group">
 							<label for="inputUserOldPassword">Current Password</label> <input autofocus="autofocus"
 								id="oldpassword" class="form-control txtoldpassword"
@@ -273,7 +271,7 @@
 								type="password" maxlength="8">
 						</div>
 						<div class="modal-footer">
-							<a href="#" class="btn btn-danger btnclose1" data-dismiss="modal">Close</a><a
+							<a href="#" class="btn btn-danger btnclosereset" data-dismiss="modal">Close</a><a
 								id="submit" class="btn btn-primary">Submit</a>
 						</div>
 
@@ -291,7 +289,6 @@
 			<form method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h3 class="modal-title">Contact Us</h3>
 						<div id="outputdiv">
 							<div class="message"></div>
