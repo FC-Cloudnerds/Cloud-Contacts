@@ -1,27 +1,25 @@
 $(document)
 		.ready(
 				function(e) {
-					$(".txtmessage").css("background-color", "");
-					$(".txtfullname").css("background-color", "");
-					$(".txtemail").css("background-color", "");
-					
-					$('.btnclose2').click(function() {
+
+					$('#modal2').on('show.bs.modal', function() {
 						$(".txtmessage").val("");
+						$('.ValidateText').val("");
+						$('.ValidateEmail').val("");
+						$(".txtmessage").css('background-color', '');
+						$(".txtfullname").css('background-color', '');
+						$(".txtemail").css('background-color', '');
+
 					});
-					$('.btnclose1').click(function(e) {
-						e.preventDefault();
-						$(".txtfullname").val("");
-						$(".txtemail").val("");
-						$(".txtmessage").val("");
-//						$(".txtmessage").css("background-color", "");
-//						$(".txtfullname").css("background-color", "");
-//						$(".txtemail").css("background-color", "");
+					$('#modal2').on('shown.bs.modal', function() {
+						$(".ValidateText").focus();
 					});
 
 					$('.submitClick')
 							.click(
 									function(e) {
 										e.preventDefault();
+										alert("contact");
 										var fname = $(".txtfullname").val();
 										var email = $(".txtemail").val();
 										var mess = $(".txtmessage").val();
@@ -36,19 +34,20 @@ $(document)
 
 										} else {
 											$('.ajaxprogress2').show();
+											var send_data = {
+												txtfullname : fname,
+												txtemail : email,
+												txtmessage : mess,
+											};
 											$
 													.ajax({
 														url : 'contactus_modal',
+														contentType : 'application/json',
 														type : 'POST',
-														data : "txtfullname="
-																+ fname
-																+ "&txtemail="
-																+ email
-																+ "&txtmessage="
-																+ mess,
+														data : JSON
+																.stringify(send_data),
 														success : function(data) {
 															// alert(data);
-
 															$('.ajaxprogress2')
 																	.hide();
 															$('.message')
@@ -63,13 +62,11 @@ $(document)
 																	.fadeOut();
 														},
 														error : function(error) {
+															$('.ajaxprogress2')
+																	.hide();
 															alert("Error..");
 														},
 														complete : function() {
-															// $(".txtfullname")
-															// .val("");
-															// $(".txtemail").val(
-															// "");
 															$('.ValidateText')
 																	.val("");
 															$('.ValidateEmail')

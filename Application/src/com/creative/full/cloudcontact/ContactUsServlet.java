@@ -1,5 +1,6 @@
 package com.creative.full.cloudcontact;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.repackaged.com.google.gson.Gson;
 
 public class ContactUsServlet extends HttpServlet {
 
@@ -18,10 +20,14 @@ public class ContactUsServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
+		BufferedReader reader = req.getReader();
+		Gson gson = new Gson();
+		ContactUs contact = gson.fromJson(reader, ContactUs.class);
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-		String fname = req.getParameter("txtfullname");
-		String email = req.getParameter("txtemail");
-		String message = req.getParameter("txtmessage");
+
+		String fname = contact.txtfullname;
+		String email = contact.txtemail;
+		String message = contact.txtmessage;
 		Entity contactus = null;
 		if (fname != null || email != null || message != null) {
 			contactus = new Entity("ContactUs", email);
@@ -41,5 +47,5 @@ public class ContactUsServlet extends HttpServlet {
 			resp.getWriter().println("nullvalue");
 		}
 	}
-
+	
 }

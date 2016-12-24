@@ -1,18 +1,18 @@
 $(document)
 		.ready(
 				function() {
-				//	alert("load over");
+					$('#error').modal('hide');
 					$('.ValidateNum')
-					.keypress(
-							function(keycode) {
-								if ((keycode.which > 47 && keycode.which < 58)
-										|| (keycode.which == 46 || keycode.which == 8)
-										|| (keycode.which == 9)) {
-									return true;
-								} else {
-									return false;
-								}
-							});
+							.keypress(
+									function(keycode) {
+										if ((keycode.which > 47 && keycode.which < 58)
+												|| (keycode.which == 46 || keycode.which == 8)
+												|| (keycode.which == 9)) {
+											return true;
+										} else {
+											return false;
+										}
+									});
 
 					$('#txtcontactname').keypress(
 							function(keycode) {
@@ -26,16 +26,6 @@ $(document)
 					$('#txtcontactname').focusout(function() {
 						name = $(this).val();
 						if (name === "") {
-							$(this).focus();
-							$(this).css("background-color", "#ffb3b3");
-						} else {
-							$(this).css("background-color", "");
-						}
-					});
-					$('.category_dropdown').focusout(function() {
-						name = $(this).val();
-						alert(name);
-						if (name == "Category") {
 							$(this).focus();
 							$(this).css("background-color", "#ffb3b3");
 						} else {
@@ -266,38 +256,41 @@ $('#profile_image').change(function(e) {
 	$('.image').attr('src', img);
 });
 
-$('.addcontact')
-		.click(
-				function() {
+$('.addcontact').click(
+		function() {
 
-					// alert("clicked");
-					var imgurl = $('.image').attr('src');
-					var varName = $('#txtcontactname').val();
-					var varMobile = $('#inputMobile').val();
-					var varLandline = $('#inputLandline').val();
-					var varEmail = $('#inputEmail').val();
-					var varAddress = $('#inputAddress').val();
-					if (varName == "" || varMobile == ""|| varLandline == ""
-						|| varEmail == "" || varAddress == "") {
-						 $('#error').modal('show');
-					
-					}else if (varName != "" && varMobile != "" && varLandline != ""
-							&& varEmail != "" && varAddress != "") {
+			// alert("clicked");
+			var imgurl = $('.image').attr('src');
+			var varName = $('#txtcontactname').val();
+			var varMobile = $('#inputMobile').val();
+			var varLandline = $('#inputLandline').val();
+			var varEmail = $('#inputEmail').val();
+			var varAddress = $('#inputAddress').val();
+			if (varName == "" || varMobile == "" || varLandline == ""
+					|| varEmail == "" || varAddress == "") {
+				$('#error').modal('show');
 
-						var tstring = $('<li class="list-group-item"><ul class="nav "><li><img src=\"'
-								+ imgurl
-								+ '\"style=\"vertical-align: middle; display: inline;width: 40px;height: 40px\" class=\"img-circle img-responsive\"> <span style=\"vertical-align: middle\">'
-								+ varName
-								+ '</span><span class=\"deleteimage hidden\"><img src=\"../Resource/Image/delete.png\" class=\"pull-right\" style=\"width: 7%; vertical-align: middle; padding-top: 9px\"></span></li></ul></li>');
-						$('.contacts').append(tstring);
+			} else if (varName != "" && varMobile != "" && varLandline != ""
+					&& varEmail != "" && varAddress != "") {
 
-					}
+				var list = {
+					imageurl : imgurl,
+					name : varName
+				};
+				generic_tamp = $('#template').html();
+				Mustache.parse(generic_tamp);
+				temp = Mustache.render(generic_tamp, list);
+				$('.return_tamp').append(temp);
+				clear();
 
-				});
-/*
- * 
- * <li class="list-group-item active"><span class="deleteimage hidden"> <img
- * src="../Resource/Image/delete.png" style="width: 7%"></span>All<span
- * class="badge">7</span></li>
- * 
- */
+			}
+			function clear() {
+				$('#txtcontactname').val("");
+				$('#profile_image').val("");
+				$('.image').attr('src', "../Resource/Image/nopic.png");
+				$('#inputMobile').val("");
+				$('#inputLandline').val("");
+				$('#inputEmail').val("");
+				$('#inputAddress').val("");
+			}
+		});

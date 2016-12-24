@@ -1,16 +1,14 @@
 $(document)
 		.ready(
 				function(e) {
-					$('.btnclosereset').click(function() {
+					$('#modal1').on('show.bs.modal', function() {
 						$(".txtoldpassword").val("");
 						$(".txtnewpassword").val("");
 						$(".txtconfirmpassword").val("");
-						$('.txtoldpassword').css(
-								"background-color", "");
-						$('.txtnewpassword').css(
-								"background-color", "");
-						$('.txtconfirmpassword').css(
-								"background-color", "");
+						$('.txtoldpassword').css("background-color","");
+						$('.txtnewpassword').css("background-color","");
+						$('.txtconfirmpassword').css("background-color","");
+						$(".txtoldpassword").focus();
 					});
 					$('.txtoldpassword').focusout(function() {
 						var password = $(this).val();
@@ -63,15 +61,12 @@ $(document)
 
 										if (pass === "" || npass === ""
 												|| cpass === "") {
-											//alert("Fill all the details..");
+											// alert("Fill all the details..");
 											$('.success1')
-											.css(
-													'display',
-													'block')
-											.html(
-													"<img src=\"../Resource/Image/error.png\" alt=\"error\" style=\"width: 5%\"><font color='red'><b>Fill all the details..</b></font>")
-											.delay(1000)
-											.fadeOut();
+													.css('display', 'block')
+													.html(
+															"<img src=\"../Resource/Image/error.png\" alt=\"error\" style=\"width: 5%\"><font color='red'><b>Fill all the details..</b></font>")
+													.delay(1000).fadeOut();
 										} else {
 											$('.ajaxprogress1').show();
 
@@ -95,7 +90,8 @@ $(document)
 																			'block')
 																	.html(
 																			"<img src=\"../Resource/Image/successtick.png\" alt=\"successtick\" style=\"width: 5%\"><font color='green'><b> "
-																					+ datas + "</b></font>")
+																					+ datas
+																					+ "</b></font>")
 																	.delay(1000)
 																	.fadeOut();
 
@@ -108,5 +104,4 @@ $(document)
 										}
 
 									});
-
 				});

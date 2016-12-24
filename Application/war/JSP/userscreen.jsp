@@ -53,8 +53,29 @@
 	</header>
 
 	<section>
-
+		<div class="modal fade" id="error" role="dialog" data-keyboard="false"
+			data-backdrop="static">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">
+							<img src="../Resource/Image/error.png" alt="Error Image"
+								width="7%">&nbsp;Error
+						</h4>
+					</div>
+					<div class="modal-body">
+						<b><span style="color: red;" class="message"> Fill all the data</span></b>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							autofocus="autofocus">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="col-md-3 column1">
+
 			<div class="row">
 				<div class="col-md-12">
 					<div class="panel panel-default category-panel">
@@ -112,12 +133,26 @@
 							<!-- 									<div class="page-header" -->
 							<!-- 										style="margin-top: 8px"> -->
 							<!-- 										A -->
+
 							<ul class="list-group contacts"
 								style="height: 310px; overflow: auto">
 
+								<div class="return_tamp">
+									<script id="template" type="template">
+								<li class="list-group-item"><ul class="nav">
+
+										
+										<li><img src="{{imageurl}}"style="vertical-align: middle; display: inline;width: 40px;height: 40px" class="img-circle img-responsive">
+<span style="vertical-align: middle">{{name}}</span>
+<span class="deleteimage hidden"><img src="../Resource/Image/delete.png" class="pull-right" style="width: 7%; vertical-align: middle; padding-top: 9px">
+</span></li>
 
 
+									</ul></li>
+</script>
+								</div>
 							</ul>
+
 							<br> <br>
 							<div class="row">
 								<div class="col-md-12">
@@ -152,11 +187,11 @@
 								<div class="col-md-7" style="vertical-align: middle;">
 									<p class="h1">
 										<input type="text" id="txtcontactname" placeholder="Name"
-											style="border: 0px">
+											style="border: 0px" autofocus="autofocus"">
 									</p>
 									<p class="h4">
 										<select class="form-control category_dropdown">
-											<option value="" selected disabled>Category</option>
+											<option value="" selected="selected" disabled>Category</option>
 											<option value="All">All</option>
 										</select>
 									</p>
@@ -181,16 +216,18 @@
 										<div class="form-group">
 											<label for="inputPassword3" class="col-sm-2 control-label">Mobile</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputMobile"
-													placeholder="Enter Mobile Number" value="">
+												<input type="text" class="form-control ValidateNum"
+													id="inputMobile" placeholder="Enter Mobile Number" value=""
+													maxlength="10">
 											</div>
 										</div>
 
 										<div class="form-group">
 											<label for="inputPassword3" class="col-sm-2 control-label">LandLine</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputLandline"
-													placeholder="Enter Landline Number" value="">
+												<input type="text" class="form-control ValidateNum"
+													id="inputLandline" placeholder="Enter Landline Number"
+													value="" maxlength="10">
 											</div>
 										</div>
 
@@ -198,7 +235,7 @@
 											<label for="inputPassword3" class="col-sm-2 control-label">E-Mail</label>
 											<div class="col-sm-10">
 												<input type="text" class="form-control " id="inputEmail"
-													placeholder="Enter E-Mail Address" value="">
+													placeholder="Enter E-Mail Address">
 											</div>
 										</div>
 
@@ -244,6 +281,7 @@
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h3 class="modal-title">Reset Password</h3>
 						<div id="outputdiv">
 							<div class="success1"></div>
@@ -257,10 +295,11 @@
 
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="inputUserOldPassword">Current Password</label> <input autofocus="autofocus"
-								id="oldpassword" class="form-control txtoldpassword"
+							<label for="inputUserOldPassword">Current Password</label> <input
+								autofocus="autofocus" id="oldpassword"
+								class="form-control txtoldpassword"
 								placeholder="Enter Old Password" name="passoldpassword"
-								type="password" maxlength="8" > <label
+								type="password" maxlength="8"> <label
 								for="inputNewPassword">New Password</label> <input
 								id="newpassword" class="form-control txtnewpassword"
 								placeholder="Enter Password" name="passnewpassword"
@@ -271,7 +310,7 @@
 								type="password" maxlength="8">
 						</div>
 						<div class="modal-footer">
-							<a href="#" class="btn btn-danger btnclosereset" data-dismiss="modal">Close</a><a
+							<a href="#" class="btn btn-danger" data-dismiss="modal">Close</a><a
 								id="submit" class="btn btn-primary">Submit</a>
 						</div>
 
@@ -289,6 +328,7 @@
 			<form method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h3 class="modal-title">Contact Us</h3>
 						<div id="outputdiv">
 							<div class="message"></div>
@@ -374,7 +414,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<a href="#" class="btn btn-danger btnclose2" data-dismiss="modal">Close</a>
+						<a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
 						<input type="submit" value="Submit"
 							class="btn btn-primary submitClick">
 					</div>
@@ -391,6 +431,8 @@
 	<script type="text/javascript" src="../JS/Application.js"></script>
 	<script type="text/javascript" src="../JS/contactus.js"></script>
 	<script type="text/javascript" src="../JS/resetpass.js"></script>
-
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"
+		type="text/javascript"></script>
 </body>
 </html>
