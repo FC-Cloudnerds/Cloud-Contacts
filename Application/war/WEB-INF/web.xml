@@ -13,6 +13,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>SignUp</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.SignupServlet</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>SignUp</servlet-name>
 		<url-pattern>/HTML/signup</url-pattern>
@@ -22,6 +23,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>loginMappig</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.LoginServlet</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>loginMappig</servlet-name>
 		<url-pattern>/HTML/login</url-pattern>
@@ -31,38 +33,83 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>contactus</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.ContactUsServlet</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>contactus</servlet-name>
 		<url-pattern>/JSP/contactus_modal</url-pattern>
-			<url-pattern>/HTML/contactus_modal</url-pattern>
+		<url-pattern>/HTML/contactus_modal</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>forgotpassword</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.ForgotPassServlet</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>forgotpassword</servlet-name>
 		<url-pattern>/HTML/forgotpass</url-pattern>
 	</servlet-mapping>
 
-
 	<servlet>
 		<servlet-name>logoff</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.LogOffServlet</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>logoff</servlet-name>
 		<url-pattern>/JSP/logoff</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
-	<servlet-name>resetpassword</servlet-name>
-	<servlet-class>com.creative.full.cloudcontact.ResetPasswordServlet</servlet-class>
+		<servlet-name>resetpassword</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.ResetPasswordServlet</servlet-class>
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>resetpassword</servlet-name>
 		<url-pattern>/JSP/changepassword</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>addcontact</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.AddContactServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>addcontact</servlet-name>
+		<url-pattern>/JSP/addcontact</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loadcontact</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.LoadContactsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loadcontact</servlet-name>
+		<url-pattern>/JSP/loadcontact</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.Upload</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/uploads</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Serve</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.Serve</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Serve</servlet-name>
+		<url-pattern>/serve</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>
 

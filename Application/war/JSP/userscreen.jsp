@@ -1,4 +1,9 @@
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory" %>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
 
+<%
+    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,27 +135,11 @@
 									aria-describedby="basic-addon1">
 							</div>
 							<hr>
-							<!-- 									<div class="page-header" -->
-							<!-- 										style="margin-top: 8px"> -->
-							<!-- 										A -->
 
 							<ul class="list-group contacts"
 								style="height: 310px; overflow: auto">
-
-								<div class="return_tamp">
-									<script id="template" type="template">
-								<li class="list-group-item"><ul class="nav">
-
-										
-										<li><img src="{{imageurl}}"style="vertical-align: middle; display: inline;width: 40px;height: 40px" class="img-circle img-responsive">
-<span style="vertical-align: middle">{{name}}</span>
-<span class="deleteimage hidden"><img src="../Resource/Image/delete.png" class="pull-right" style="width: 7%; vertical-align: middle; padding-top: 9px">
-</span></li>
-
-
-									</ul></li>
-</script>
-								</div>
+								
+								
 							</ul>
 
 							<br> <br>
@@ -195,7 +184,10 @@
 											<option value="All">All</option>
 										</select>
 									</p>
-									<input type="file" id="profile_image"><br> <br>
+									<form action="<%= blobstoreService.createUploadUrl("/uploads") %>" method="post"  id="myform" enctype="multipart/form-data">
+									<input type="file" id="profile_image" name="cimage">
+									</form>
+									<br> <br>
 									<br> <br> <a
 										class="glyphicon glyphicon-plus-sign hidden newContact"
 										href='#'></a> </span>
@@ -422,6 +414,25 @@
 			</form>
 		</div>
 	</div>
+	
+	<script id="First_letter_template" type="mustache/x-tmpl">
+<div class="page-header insidefirstletter" style="margin-top: 8px">
+<span class="{{.}}">{{.}}</span>
+</div>
+</script>
+	
+	<script id="templateid" type="mustache/x-tmpl">
+		<li class="list-group-item">
+		<ul class="nav ">
+		<li>
+			<img src="{{contactimage}}"style="vertical-align: middle; display: inline;width: 40px;height: 40px" class="img-circle img-responsive">
+		 	<span style="vertical-align: middle">{{contactname}}</span>
+			<span class="deleteimage hidden"><img src="../Resource/Image/delete.png" class="pull-right" style="width: 7%; vertical-align: middle; padding-top: 9px">
+			</span>
+		</li>
+		</ul>
+		</li>
+		</script>
 
 	<script
 		src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>

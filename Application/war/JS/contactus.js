@@ -19,7 +19,6 @@ $(document)
 							.click(
 									function(e) {
 										e.preventDefault();
-										alert("contact");
 										var fname = $(".txtfullname").val();
 										var email = $(".txtemail").val();
 										var mess = $(".txtmessage").val();

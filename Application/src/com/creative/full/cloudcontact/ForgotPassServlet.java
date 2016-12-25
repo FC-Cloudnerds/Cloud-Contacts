@@ -18,7 +18,6 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.repackaged.com.fasterxml.jackson.core.JsonParser;
 
 
 public class ForgotPassServlet extends HttpServlet {
