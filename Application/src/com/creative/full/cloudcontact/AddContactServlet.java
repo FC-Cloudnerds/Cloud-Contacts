@@ -14,13 +14,11 @@ import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 
-
 @SuppressWarnings("serial")
-
 
 public class AddContactServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-	    
+
 		BufferedReader reader = req.getReader();
 		Gson gson = new Gson();
 		Contacts person = gson.fromJson(reader, Contacts.class);
@@ -30,11 +28,10 @@ public class AddContactServlet extends HttpServlet {
 		String contactlandline = person.contactlandline;
 		String contactemail = person.contactemail;
 		String contactaddress = person.contactaddress;
-		String Sessionid= (String) req.getSession().getAttribute("userid");
-		 
-		
+		String Sessionid = (String) req.getSession().getAttribute("userid");
+
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		
+
 		Entity contact = new Entity("contact");
 		contact.setProperty("Contact Name", contactname);
 		contact.setProperty("Contact Mobile Number", contactmobile);
@@ -43,20 +40,18 @@ public class AddContactServlet extends HttpServlet {
 		contact.setProperty("Contact Address", contactaddress);
 		contact.setProperty("Contact Image", contactimage);
 		contact.setProperty("Accountid", Sessionid);
-		
+
 		datastore.put(contact);
-		
+
 		resp.setContentType("application/json");
-        JSONObject obj = new JSONObject();
-        try {
+		JSONObject obj = new JSONObject();
+		try {
 			obj.put("Status", "0");
 
-		} 
-        catch (JSONException e) {
+		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		resp.getWriter().println(obj);
-		
-		
+
 	}
 }

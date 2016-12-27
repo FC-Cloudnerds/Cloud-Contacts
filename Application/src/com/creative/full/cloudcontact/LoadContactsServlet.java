@@ -1,7 +1,6 @@
 package com.creative.full.cloudcontact;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -14,15 +13,18 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 
-
 @SuppressWarnings("serial")
 public class LoadContactsServlet extends HttpServlet {
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query("contact").addSort("Contact Name", SortDirection.ASCENDING);
+		Filter propertyFilter = new FilterPredicate("Accountid", FilterOperator.EQUAL, req.getSession().getAttribute("userid"));
+		Query query = new Query("contact").setFilter(propertyFilter).addSort("Contact Name", SortDirection.ASCENDING);
 		PreparedQuery preparedquery = datastore.prepare(query);
 		
 		

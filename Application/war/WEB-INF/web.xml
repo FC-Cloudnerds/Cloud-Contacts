@@ -13,7 +13,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>SignUp</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.SignupServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>SignUp</servlet-name>
 		<url-pattern>/HTML/signup</url-pattern>
@@ -23,7 +23,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>loginMappig</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.LoginServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>loginMappig</servlet-name>
 		<url-pattern>/HTML/login</url-pattern>
@@ -33,7 +33,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>contactus</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.ContactUsServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>contactus</servlet-name>
 		<url-pattern>/JSP/contactus_modal</url-pattern>
@@ -44,7 +44,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>forgotpassword</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.ForgotPassServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>forgotpassword</servlet-name>
 		<url-pattern>/HTML/forgotpass</url-pattern>
@@ -54,7 +54,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>logoff</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.LogOffServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>logoff</servlet-name>
 		<url-pattern>/JSP/logoff</url-pattern>
@@ -90,6 +90,26 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/JSP/loadcontact</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>deletecontact</servlet-name>
+		<url-pattern>/JSP/deletecontact</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>deletecontact</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.DeleteContactServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>deletecategory</servlet-name>
+		<url-pattern>/JSP/deletecategory</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>deletecategory</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.DeleteCategoryServlet</servlet-class>
+	</servlet>
+	
 	<servlet>
 		<servlet-name>Upload</servlet-name>
 		<servlet-class>com.creative.full.cloudcontact.Upload</servlet-class>
@@ -108,6 +128,26 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>Serve</servlet-name>
 		<url-pattern>/serve</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AddCategory</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.AddCategoryServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AddCategory</servlet-name>
+		<url-pattern>/JSP/AddCategory</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoadCategory</servlet-name>
+		<servlet-class>com.creative.full.cloudcontact.LoadCategoryServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LoadCategory</servlet-name>
+		<url-pattern>/JSP/LoadCategory</url-pattern>
 	</servlet-mapping>
 
 

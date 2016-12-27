@@ -56,8 +56,7 @@ $(document)
 
 										var pass = $('.txtoldpassword').val();
 										var npass = $('.txtnewpassword').val();
-										var cpass = $('.txtconfirmpassword')
-												.val();
+										var cpass = $('.txtconfirmpassword').val();
 
 										if (pass === "" || npass === ""
 												|| cpass === "") {
@@ -72,7 +71,7 @@ $(document)
 
 											$
 													.ajax({
-														type : "POST",
+														type : "PUT",
 														url : "changepassword",
 														data : "passoldpassword="
 																+ pass
@@ -82,6 +81,10 @@ $(document)
 																+ cpass,
 														success : function(
 																datas) {
+															 $('.txtoldpassword').val("");
+															$('.txtnewpassword').val("");
+															 $('.txtconfirmpassword').val("");
+
 															$('.ajaxprogress1')
 																	.hide();
 															$('.success1')

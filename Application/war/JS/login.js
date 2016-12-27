@@ -51,7 +51,7 @@ $(document)
 										} else {
 											$
 													.ajax({
-														type : "POST",
+														type : "GET",
 														url : "login",
 														data : "txtemail="
 																+ email

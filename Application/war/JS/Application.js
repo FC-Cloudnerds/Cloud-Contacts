@@ -136,31 +136,22 @@ $('#inputAddress').focusout(function() {
 
 							else {
 									if (contactSelectCount == 1) {
-										$(this).closest('.category-panel').find('.button-delete-category').removeClass('hidden');
+										$(this).closest('.category-panel').find('.button-delete-contact').removeClass('hidden');
 									} 
 									else if (contactSelectCount == 0) {
 											$(this).closest('.category-panel')
-															.find('.button-delete-category')
+															.find('.button-delete-contact')
 															.addClass('hidden');
 											}
 									}
 
 								}
 					});
-					
+
+					loadContact();
+					loadCategory();
 					
 
-					$('.add-category').on('click','.add-button',function() {
-							var ancestor = $(this).closest('.category-panel');
-							var value = ancestor.find('.add-category').children('input').val();
-								if (value.length > 0) {
-									ancestor.find('.add-category').children('input').val("");
-									var string = $('<li class="list-group-item category"><span class="deleteimage hidden"><img src="../Resource/Image/delete.png" style="width: 7%"></span> '+ value+ '<span class="badge">0</span></li>');
-									var string2 = $('<option value=\"'+ value + '\">' + value+ '</option>');
-									ancestor.find('.category-list-group').append(string);
-									$('.category_dropdown').append(string2);
-								}
-						});
 					});
 
 $('.category-panel').on('click', '.list-group-item', function() {
@@ -231,6 +222,13 @@ $('.addcontact').click(function(){
 					$('#inputEmail').val("");
 					$('#inputAddress').val("");
 				};
+				if (varName == "" || varMobile == "" || varLandline == ""|| varEmail == "" || varAddress == "") {
+					 $('#error').modal('show');
+					 return false;
+
+					 } 
+			 
+		
 			$.ajax({
     			type: "POST",
     			url: 'addcontact',
@@ -253,7 +251,7 @@ $('.addcontact').click(function(){
 	
 	var loadContact = function() {
 		$.ajax({
-			type: "POST",
+			type: "GET",
 			url: "loadcontact",
 			contentType: 'application/json',
 			dataType: 'json',
@@ -280,6 +278,124 @@ $('.addcontact').click(function(){
 			}
 		});
 	}
-	loadContact();
+	
+	
+	$('.add-category').on('click','.add-button',function() {
+		var ancestor = $(this).closest('.category-panel');
+		var value = ancestor.find('.add-category').children('input').val();
+		$('.add-category').children('input').val("");
+		var category = {category_name : value};
+			if (value.length > 0) {
+				$.ajax({
+					url : 'AddCategory',
+					contentType : 'application/json',
+					type : 'POST',
+					dataType : 'json',
+					data : JSON.stringify(category),
+					success : function() {
+					loadCategory();
+					},
+					error : function(e) {
+					alert("error...");
+					}
+					});
+			}
+	});
+	
+	
+	var loadCategory = function(){
+		$.ajax({
+		url : 'LoadCategory',
+		contentType : 'application/json',
+		type : 'GET',
+		dataType : 'json',
+		data : JSON.stringify({'Status' : 'UpdateCategory'}),
+		success : function(data) {
+			$('#load_cat_temp').empty();
+			$('.category_dropdown').empty();
+			var generic_cat_tamp = $('#load_cat_generic_temp').html();
+			$.each(data,function(key, cat_name) {
+				temp = Mustache.to_html(generic_cat_tamp, data);
+				$('#load_cat_temp').append(temp);
+				$('.category_dropdown').append("<option class='defaultcategory' value='' selected='selected' disabled>Category</option>");
+				$('.category_dropdown').append("<option class='defaultcategory' value='All'>All</option>");
+				for (var i = 0; i < cat_name.length; i++) {
+					$('.category_dropdown').append("<option>" + cat_name[i]+ "</option>");
+				}
+			});
+		},
+		error : function(e) {
+		alert("error...");
+		}
+		});	
+	}
+	
+	
+	$('.button-delete-contact').click(function(){
+		var contacts_to_delete = [];
+		$('.deleteimage:not(:hidden)').prev().text(function(i, txt) {
+			contacts_to_delete.push(txt);
+		});	
+		var del_contact =
+				{
+				"delete_contact" : contacts_to_delete
+				};
+		
+		
+		$.ajax({
+			type: "DELETE",
+			url: 'deletecontact',
+			contentType: 'application/json',
+			dataType: 'json',
+			mimeType: 'application/json',
+			data: JSON.stringify(del_contact),
+			success: function(contact){
+				if(contact.Status == "0")
+					{
+					loadContact();
+					}
+			},
+			error: function(e){
+				alert("error message");
+			}
+		});
+	});
+	
+	$('.button-delete-category').click(function(){
+		var category_to_delete = [];
+		$('.deleteimage').not('.hidden').next().text(function(i, txt) {
+			category_to_delete.push(txt);
+		});	
+		var del_category =
+				{
+				"delete_category" : category_to_delete
+				};
+		
+		
+		$.ajax({
+			type: "DELETE",
+			url: 'deletecategory',
+			contentType: 'application/json',
+			dataType: 'json',
+			mimeType: 'application/json',
+			data: JSON.stringify(del_category),
+			success: function(category){
+				if(category.Status == "0")
+					{
+					
+					loadCategory();
+					}
+			},
+			complete:function(){
+				$('.button-delete-category').addClass('hidden');
+			},
+			error: function(e){
+				alert("error message");
+			}
+		});
+	});
+	
+	
+	
 	
 

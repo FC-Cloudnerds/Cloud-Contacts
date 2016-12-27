@@ -13,7 +13,7 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 @SuppressWarnings("serial")
 public class ResetPasswordServlet extends HttpServlet {
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/html");
 		
 		String aoldpassword = req.getParameter("passoldpassword");

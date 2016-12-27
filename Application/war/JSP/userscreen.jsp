@@ -99,6 +99,9 @@
 									class="deleteimage hidden"> <img
 										src="../Resource/Image/delete.png" style="width: 7%"></span>
 									All<span class="badge">7</span></li>
+								<div id="load_cat_temp"> 
+								
+								</div>
 							</ul>
 							</br> </br> </br>
 
@@ -145,7 +148,7 @@
 							<br> <br>
 							<div class="row">
 								<div class="col-md-12">
-									<button class="btn btn-danger button-delete-category hidden"
+									<button class="btn btn-danger button-delete-contact hidden"
 										style="width: 100%">DELETE CONTACT</button>
 								</div>
 							</div>
@@ -176,12 +179,15 @@
 								<div class="col-md-7" style="vertical-align: middle;">
 									<p class="h1">
 										<input type="text" id="txtcontactname" placeholder="Name"
-											style="border: 0px" autofocus="autofocus"">
+											style="border: 0px">
 									</p>
 									<p class="h4">
 										<select class="form-control category_dropdown">
-											<option value="" selected="selected" disabled>Category</option>
-											<option value="All">All</option>
+											<option class="defaultcategory" value="" selected="selected" disabled>Category</option>
+											<option class="defaultcategory" value="All">All</option>
+											<div id=category_below_all>
+											
+											</div>
 										</select>
 									</p>
 									<form action="<%= blobstoreService.createUploadUrl("/uploads") %>" method="post"  id="myform" enctype="multipart/form-data">
@@ -416,10 +422,10 @@
 	</div>
 	
 	<script id="First_letter_template" type="mustache/x-tmpl">
-<div class="page-header insidefirstletter" style="margin-top: 8px">
-<span class="{{.}}">{{.}}</span>
-</div>
-</script>
+		<div class="page-header insidefirstletter" style="margin-top: 8px">
+		<span class="{{.}}">{{.}}</span>
+		</div>
+	</script>
 	
 	<script id="templateid" type="mustache/x-tmpl">
 		<li class="list-group-item">
@@ -432,7 +438,15 @@
 		</li>
 		</ul>
 		</li>
-		</script>
+	</script>
+		
+	<script id="load_cat_generic_temp" type="template">
+		{{#category_name}}
+		<li class="list-group-item category">
+		<span class="deleteimage hidden">
+		<img src="../Resource/Image/delete.png" style="width: 7%"></span><span>{{.}}</span><span class="badge">0</span></li>
+		{{/category_name}}
+	</script>
 
 	<script
 		src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>

@@ -42,7 +42,7 @@ $(document)
 											$
 													.ajax({
 														url : 'forgotpass',
-														type : 'POST',
+														type : 'GET',
 														data : "txtemail="
 																+ email,
 														success : function(data) {
@@ -104,7 +104,7 @@ $(document)
 
 											$.ajax({
 														url : 'forgotpass',
-														type : 'POST',
+														type : 'GET',
 														data : "txtemail="
 																+ email
 																+ "&txtanswer="

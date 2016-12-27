@@ -16,9 +16,7 @@ public class SignupServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-		res.setContentType("application/json");
-		
-
+//		res.setContentType("application/json");
 		String fname = req.getParameter("txtfullname");
 		String email = req.getParameter("txtemail");
 		String mno = req.getParameter("txtmobileno");
@@ -37,10 +35,6 @@ public class SignupServlet extends HttpServlet {
 
 			ds.put(user);
 		res.getWriter().print("Successfully data added..");
-//			res.sendRedirect("/HTML/login.html");
 		}
-//		else{
-//			res.getWriter().print("Fill all data..");
-//		}
 	}
 }

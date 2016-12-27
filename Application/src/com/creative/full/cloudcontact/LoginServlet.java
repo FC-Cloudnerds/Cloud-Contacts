@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
 		res.setContentType("text/html");
 
