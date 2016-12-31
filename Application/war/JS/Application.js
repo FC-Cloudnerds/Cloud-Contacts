@@ -139,9 +139,7 @@ $('#inputAddress').focusout(function() {
 										$(this).closest('.category-panel').find('.button-delete-contact').removeClass('hidden');
 									} 
 									else if (contactSelectCount == 0) {
-											$(this).closest('.category-panel')
-															.find('.button-delete-contact')
-															.addClass('hidden');
+											$(this).closest('.category-panel').find('.button-delete-contact').addClass('hidden');
 											}
 									}
 
@@ -150,8 +148,6 @@ $('#inputAddress').focusout(function() {
 
 					loadContact();
 					loadCategory();
-					
-
 					});
 
 $('.category-panel').on('click', '.list-group-item', function() {
@@ -225,10 +221,7 @@ $('.addcontact').click(function(){
 				if (varName == "" || varMobile == "" || varLandline == ""|| varEmail == "" || varAddress == "") {
 					 $('#error').modal('show');
 					 return false;
-
 					 } 
-			 
-		
 			$.ajax({
     			type: "POST",
     			url: 'addcontact',

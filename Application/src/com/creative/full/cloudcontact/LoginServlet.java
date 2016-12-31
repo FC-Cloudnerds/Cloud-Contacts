@@ -28,24 +28,25 @@ public class LoginServlet extends HttpServlet {
 		email = req.getParameter("txtemail");
 		pass = req.getParameter("txtpassword");
 		Key key = KeyFactory.createKey("User", email);
+		if (email != null) {
+			try {
+				Entity e = ds.get(key);
+				dbemail = e.getProperty("Email").toString();
+				dbpass = e.getProperty("Password").toString();
+				username = (String) ds.get(key).getProperty("Full name");
+				if (email.toLowerCase().equals(dbemail.toLowerCase())) {
+					if (pass.equals(dbpass) == true) {
+						res.getWriter().print("success");
+						HttpSession session = req.getSession();
+						session.setAttribute("username", username);
+						session.setAttribute("userid", email);
+					} else {
+						res.getWriter().print("incorrect_pass");
+					}
+				}
 
-		try {
-			Entity e = ds.get(key);
-			dbemail = e.getProperty("Email").toString();
-			dbpass = e.getProperty("Password").toString();
-			username = (String) ds.get(key).getProperty("Full name");
-
-		} catch (EntityNotFoundException e) {
-			e.printStackTrace();
-		}
-		if (email.toLowerCase().equals(dbemail.toLowerCase())) {
-			if (pass.equals(dbpass) == true) {
-				res.getWriter().print("success");
-				HttpSession session = req.getSession();
-				session.setAttribute("username", username);
-				session.setAttribute("userid", email);
-			} else {
-				res.getWriter().print("incorrect_pass");
+			} catch (EntityNotFoundException e) {
+				res.getWriter().print("incoorect_EmailId");
 			}
 		}
 	}

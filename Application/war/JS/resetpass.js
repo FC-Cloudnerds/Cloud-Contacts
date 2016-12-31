@@ -88,13 +88,8 @@ $(document)
 															$('.ajaxprogress1')
 																	.hide();
 															$('.success1')
-																	.css(
-																			'display',
-																			'block')
-																	.html(
-																			"<img src=\"../Resource/Image/successtick.png\" alt=\"successtick\" style=\"width: 5%\"><font color='green'><b> "
-																					+ datas
-																					+ "</b></font>")
+																	.css('display','block')
+																	.html(datas)
 																	.delay(1000)
 																	.fadeOut();
 

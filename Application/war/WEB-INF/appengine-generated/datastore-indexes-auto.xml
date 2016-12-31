@@ -1,17 +1,17 @@
-<!-- Indices written at Tue, 27 Dec 2016 14:16:47 IST -->
+<!-- Indices written at Sat, 31 Dec 2016 17:39:55 IST -->
 
 <datastore-indexes>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Category" ancestor="false" source="auto">
+        <property name="EmailID" direction="asc"/>
+        <property name="CategoryName" direction="asc"/>
+    </datastore-index>
 
     <!-- Used 1 time in query history -->
     <datastore-index kind="contact" ancestor="false" source="auto">
         <property name="Accountid" direction="asc"/>
         <property name="Contact Name" direction="asc"/>
-    </datastore-index>
-
-    <!-- Used 2 times in query history -->
-    <datastore-index kind="Category" ancestor="false" source="auto">
-        <property name="EmailID" direction="asc"/>
-        <property name="CategoryName" direction="asc"/>
     </datastore-index>
 
 </datastore-indexes>
