@@ -2,6 +2,8 @@ var user_signup= (function(){
 	var $name,$email,$mobile,$password,$repassword,$securityQue,$answer;
 	var name,email,mobile,password,repassword,securityQue,answer;
 	var expression = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+	
+	//Cache DOM
 	$name = $('.txtfullname');
 	$email=$('.txtemail');
 	$mobile= $('.txtmobileno');
@@ -11,6 +13,8 @@ var user_signup= (function(){
 	$answer=$('.txtanswer');
 	$sumbmit_btn=$('.btnsubmit');
 	
+	
+	//Binds events 
 	$name.focusout(validateName);		
 	$email.focusout(validateEmail);
 	$mobile.focusout(validateMobileNo);		
@@ -33,11 +37,12 @@ var user_signup= (function(){
 		createAccount(name,email,mobile,password,securityQue,answer);
 	});
 	
+	//Functions - sandbox 
 	function validateName() {
 		name = $(this).val();
 		if (name === "") {
-			$(this).focus();
-			$(this).css("background-color", "#ffb3b3");
+			$(this).focus()
+				.css("background-color", "#ffb3b3");
 		} else {
 			$(this).css("background-color", "");
 		}
@@ -46,27 +51,27 @@ var user_signup= (function(){
 	function validateEmail() {
 		email = $(this).val();
 		if (email === "") {
-			$(this).focus();
-			$(this).css("background-color","#ffb3b3");
+			$(this).focus()
+				.css("background-color","#ffb3b3");
 		} else {
 			$(this).css("background-color", "");
 		}
 		if (expression.test(email) === false) {
-			$(this).focus();
-			$(this).css("background-color","#ffb3b3");
-			$(this).attr("placeholder","Enter Valid Email Id");
-			$(this).val("");
+			$(this).focus()
+				.css("background-color","#ffb3b3")
+				.attr("placeholder","Enter Valid Email Id")
+				.val("");
 		} else {
-			$(this).css("background-color", "");
-			$(this).attr("placeholder","Enter Email Id");
+			$(this).css("background-color", "")
+				.attr("placeholder","Enter Email Id");
 		}
 	}
 
 	function validateMobileNo() {
 		mobile = $(this).val();
 		if (mobile === "") {
-			$(this).focus();
-			$(this).css("background-color", "#ffb3b3");
+			$(this).focus()
+				.css("background-color", "#ffb3b3");
 		} else {
 			$(this).css("background-color", "");
 		}
@@ -75,10 +80,10 @@ var user_signup= (function(){
 	function validatePassword() {
 		password = $(this).val();
 		if (password === "") {
-			$(this).focus();
-			$(this).css("background-color", "#ffb3b3");
+			$(this).focus()
+				.css("background-color", "#ffb3b3");
 		} else {
-		$(this).css("background-color", "");
+			$(this).css("background-color", "");
 		}
 	}
 	
@@ -86,28 +91,34 @@ var user_signup= (function(){
 		repassword = $repassword.val();
 		password = $password.val();
 		if (repassword === "") {
-			$(this).focus();
-			$(this).css("background-color", "#ffb3b3");
+			$(this).focus()
+				.css("background-color", "#ffb3b3");
 		} else {
 			$(this).css("background-color", "");
+			checkPassEquality(password,repassword);
 		}
+	}
+	
+	function checkPassEquality(password,repassword){
 		if (repassword !== password) {
-			$password.focus();
-			$password.val("");
-			$(this).val("");
-			$password.css("background-color","#ffb3b3");
-			$(this).css("background-color", "#ffb3b3");
+			$password.focus()
+				.val("")
+				.css("background-color","#ffb3b3");
+			$repassword.val("")
+				.css("background-color", "#ffb3b3");
+			return false;
 		} else {
 			$password.css("background-color","");
-			$(this).css("background-color", "");
+			$repassword.css("background-color", "");
+			return true;
 		}
 	}
 	
 	function validateSecQue() {
 		securityQue = $(this).val();
 		if (securityQue === "--- Select ---") {
-			$(this).focus();
-			$(this).css("background-color", "#ffb3b3");
+			$(this).focus()
+				.css("background-color", "#ffb3b3");
 		} else {
 			$(this).css("background-color", "");
 		}
@@ -116,8 +127,8 @@ var user_signup= (function(){
 	function validateAnswer() {
 		answer = $(this).val();
 		if (answer === "") {
-			$(this).focus();
-			$(this).css("background-color", "#ffb3b3");
+			$(this).focus()
+				.css("background-color", "#ffb3b3");
 		} else {
 			$(this).css("background-color", "");
 		}
@@ -138,55 +149,13 @@ var user_signup= (function(){
 			return true;
 		}
 	}
-	function allow_sec_que(index){
-		var que_list = [],que,c=0;
-		$('.ddbsequ').find('option').text(function(i,val){
-			que_list.push(val);
-		});
-		if(typeof index== "number"){
-			if(index>0 && index<=6)
-			{
-			que=que_list[index];
-			c=1;
-			}			
-		}
-		else{
-		for(var i=1;i<=que_list.length;i++){
-			if(index == que_list[i]){
-				que=que_list[i];
-				c=1;
-				break;
-		}
-		}
-		}
-		if(c==1){
-			return que;
-			c=0;
-		}else{
+	
+	function createAccount(name,email,mobile,password,securityQue,answer) {
+		if(arguments.length !== 6){
+			console.log("Enter valid numbers of arguments..");
 			return false;
 		}
-	}
-	function validateMobileForApi(mobile){		 
-	        var filter = /^[0-9]+$/;
-	        if (filter.test(mobile)) {
-	            return true;
-	        }
-	        else {
-	            return false;
-	        }
-	}
-	function validateNameForApi(name){
- 		var numbers = /^[a-zA-Z]+$/; ;  
-	      if(name.match(numbers))  {  
-	      return true;  
-	      }  
-	      else {  
-	      return false;  
-	      }  
-		
-	}
-	function createAccount(name,email,mobile,password,securityQue,answer) {
-		if (name === "" || email === "" || mobile === "" || password === "" ||  securityQue === "" || answer === "" || arguments.length !== 6) {
+		else if (name === "" || email === "" || mobile === "" || password === "" ||  securityQue === "" || answer === "" ) {
 			$('#error').modal('show');
 			return false;
 		} else {
@@ -206,25 +175,76 @@ var user_signup= (function(){
 				}
 			}
 			if(name_bool === true && mobile_bool===true && que_bool !== false){
-			$.ajax({
-					type : "POST",
-					url : "signup",
-					data : "txtfullname=" + name + "&txtemail=" + email + "&txtmobileno=" + mobile + "&txtpassword=" + password + "&ddbsequ=" + securityQue + "&txtanswer=" + answer,
-					success : function(e) {
-						if(e === 1){
-							$('#success').modal('show');
-						}else if(e== 0){
-							$('#error').find('.message').html("<b>Email id already exits..</b>");
-							$('#error').modal('show');
-						}
-						
-					},
-					error : function(e) {
-						alert("Error in signup...");
-					}
-				});	
+				submitDataAjaxCall(name,email,mobile,password,securityQue,answer);
+			}				
+		}
+	
+	function allow_sec_que(index){
+		var que_list = [],que,c=0;
+		$('.ddbsequ').find('option').text(function(i,val){
+			que_list.push(val);
+		});
+		if(typeof index== "number"){
+			if(index>0 && index<=6){
+			que=que_list[index];
+			c=1;
+			}			
+		}
+		else{
+			for(var i=1;i<=que_list.length;i++){
+				if(index == que_list[i]){
+					que=que_list[i];
+					c=1;
+					break;
+				}
 			}
 		}
+		if(c==1){
+			return que;
+			c=0;
+		}else{
+			return false;
+		}
+	}
+	
+	function validateMobileForApi(mobile){		 
+	        var filter = /^[0-9]+$/;
+	        if (filter.test(mobile)) {
+	            return true;
+	        }
+	        else {
+	            return false;
+	        }
+	}
+	
+	function validateNameForApi(name){
+ 		var numbers = /^[a-zA-Z ]+$/; ;  
+	      if(name.match(numbers))  {  
+	      return true;  
+	      }  
+	      else {  
+	      return false;  
+	      }  
+	}
+	
+	function submitDataAjaxCall(name,email,mobile,password,securityQue,answer){
+		$.ajax({
+			type : "POST",
+			url : "signup",
+			data : "txtfullname=" + name + "&txtemail=" + email + "&txtmobileno=" + mobile + "&txtpassword=" + password + "&ddbsequ=" + securityQue + "&txtanswer=" + answer,
+			success : function(e) {
+				if(e == 1){
+					$('#success').modal('show');
+				}else if(e== 0){
+					$('#error').find('.message').html("<b>Email id already exits..</b>");
+					$('#error').modal('show');
+				}
+			},
+			error : function(e) {
+				alert("Error in signup page...");
+			}
+		});	
+	}
 	
 	return{
 		createAccount : createAccount

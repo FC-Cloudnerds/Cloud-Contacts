@@ -1,105 +1,129 @@
-$(document)
-		.ready(
-				function(e) {
-					$('#modal1').on('show.bs.modal', function() {
-						$(".txtoldpassword").val("");
-						$(".txtnewpassword").val("");
-						$(".txtconfirmpassword").val("");
-						$('.txtoldpassword').css("background-color","");
-						$('.txtnewpassword').css("background-color","");
-						$('.txtconfirmpassword').css("background-color","");
-						$(".txtoldpassword").focus();
-					});
-					$('.txtoldpassword').focusout(function() {
-						var password = $(this).val();
-						if (password === "") {
-							$(this).focus();
-							$(this).css("background-color", "#ffb3b3");
-						} else {
-							$(this).css("background-color", "");
-						}
-					});
-					$('.txtnewpassword').focusout(function() {
-						var password = $(this).val();
-						if (password === "") {
-							$(this).focus();
-							$(this).css("background-color", "#ffb3b3");
-						} else {
-							$(this).css("background-color", "");
-						}
-					});
-					$('.txtconfirmpassword').focusout(
-							function() {
-								var password = $(this).val();
-								var repassword = $('.txtnewpassword').val();
-								if (password === "") {
-									$(this).focus();
-									$(this).css("background-color", "#ffb3b3");
-								} else {
-									$(this).css("background-color", "");
-								}
-								if (password != repassword) {
-									$('.txtnewpassword').focus();
-									$('.txtnewpassword').val("");
-									$('.txtconfirmpassword').val("");
-									$('.txtnewpassword').css(
-											"background-color", "#ffb3b3");
-									$('.txtconfirmpassword').css(
-											"background-color", "#ffb3b3");
-								}
-							});
+var resetpass=(function(){
+	var $oldpass,$newpass,$confirmpass,oldpass_val,newpass_val,confirmpass_val;
+	
+	//Cache DOM
+	$oldpass=$(".txtoldpassword");
+	$newpass=$(".txtnewpassword");
+	$confirmpass=$(".txtconfirmpassword");
+	$submit_btn= $('#submit');
+	pass_val = $oldpass.val();
+	newpass_val = $newpass.val();
+	confirmpass_val =  $confirmpass.val();
+	
+	//Binding events
+	$('#modal1').on('show.bs.modal', modalShownEvent);
+	$oldpass.focusout(validateOldPass);
+	$newpass.focusout(validateNewPass);
+	$confirmpass.focusout(validateconfirmPass);
+	$submit_btn.click(function(e){
+		e.preventDefault();
+		changePassword(pass_val,newpass_val,confirmpass_val);
+	});
+	
+	//Functions - sandbox
+	function modalShownEvent() {
+		$oldpass.val("")
+			.css("background-color","")
+			.focus();
+		$newpass.val("")
+			.css("background-color","");
+		$confirmpass.val("")
+			.css("background-color","");
+	}
+	
+	function validateOldPass() {
+		pass_val = $(this).val();
+		if (pass_val === "") {
+			$(this).focus()
+				.css("background-color", "#ffb3b3");
+		} else {
+			$(this).css("background-color", "");
+		}
+	}
 
-					$('#submit')
-							.click(
-									function(e) {
-										e.preventDefault();
+	function validateNewPass() {
+		newpass_val = $(this).val();
+		if (newpass_val === "") {
+			 $(this).focus()
+			 	.css("background-color", "#ffb3b3");
+		 } else {
+			 $(this).css("background-color", "");
+		 }
+	 }
 
-										var pass = $('.txtoldpassword').val();
-										var npass = $('.txtnewpassword').val();
-										var cpass = $('.txtconfirmpassword').val();
+	function validateconfirmPass() {
+		confirmpass_val = $(this).val();
+		newpass_val = $newpass.val();
+		if (confirmpass_val === "") {
+			$(this).focus()
+				.css("background-color", "#ffb3b3");
+		}else {
+			$(this).css("background-color", "");
+			checkPassEquality(newpass_val,confirmpass_val);
+		 }
+	 }
+	
+	function checkPassEquality(newpass_val,confirmpass_val){
+		if (confirmpass_val != newpass_val) {
+			$newpass.focus()
+				.val("")
+				.css("background-color", "#ffb3b3");
+			$confirmpass.val("")
+				.css("background-color", "#ffb3b3");
+			return false;
+		}else{
+			$newpass.css("background-color","");
+			$confirmpass.css("background-color", "");
+			return true;
+		}
+	}
+	
+	function changePassword(pass,npass,cpass) {
+		if(arguments.length != 3){
+			console.log("Enter valid numbers of arguments..");
+			return false;
+		}else {
+		var ans=checkPassEquality(npass,cpass);
+		if(ans == false ){
+			console.log("New password and confirm passeord should be same.");
+			return false;
+		}
+	}
+	if (pass === "" || npass === "" || cpass === "") {
+			$('.success1').css('display', 'block').html("<img src=\"../Resource/Image/error.png\" alt=\"error\" style=\"width: 5%\"><font color='red'><b>Fill all the details..</b></font>").delay(1000).fadeOut();
+			console.log("Enter all details...");
+	} else {
+			$('.ajaxprogress1').show();
+			changePassAjaxCall(pass,npass,cpass);
+		}
+	}
 
-										if (pass === "" || npass === ""
-												|| cpass === "") {
-											// alert("Fill all the details..");
-											$('.success1')
-													.css('display', 'block')
-													.html(
-															"<img src=\"../Resource/Image/error.png\" alt=\"error\" style=\"width: 5%\"><font color='red'><b>Fill all the details..</b></font>")
-													.delay(1000).fadeOut();
-										} else {
-											$('.ajaxprogress1').show();
+	function changePassAjaxCall(pass,npass,cpass){
+		$.ajax({
+			type : "PUT",
+			url : "changepassword",
+			data : "passoldpassword=" + pass + "&passnewpassword=" + npass + "&passnewrepassword=" + cpass,
+			success : function(datas) {
+				$oldpass.val("");
+				$newpass.val("");
+				$confirmpass.val("");
+				$('.ajaxprogress1').hide();
+				$('.success1').css('display','block')
+						.html(datas)
+						.delay(1000)
+						.fadeOut();
+				var start_str=datas.search("<b>");
+				var end_str=datas.search("</b>");
+				var str=datas.slice(start_str+3,end_str);
+				console.log(str);
+			},
+			error : function(e) {
+				alert("Error in change password..");
+			}
+		});
+}
+	return{
+		changePassword : changePassword,
+	};
+})()
 
-											$
-													.ajax({
-														type : "PUT",
-														url : "changepassword",
-														data : "passoldpassword="
-																+ pass
-																+ "&passnewpassword="
-																+ npass
-																+ "&passnewrepassword="
-																+ cpass,
-														success : function(
-																datas) {
-															 $('.txtoldpassword').val("");
-															$('.txtnewpassword').val("");
-															 $('.txtconfirmpassword').val("");
-
-															$('.ajaxprogress1')
-																	.hide();
-															$('.success1')
-																	.css('display','block')
-																	.html(datas)
-																	.delay(1000)
-																	.fadeOut();
-
-														},
-														error : function(e) {
-															alert("error message");
-														}
-
-													});
-										}
-
-									});
-				});

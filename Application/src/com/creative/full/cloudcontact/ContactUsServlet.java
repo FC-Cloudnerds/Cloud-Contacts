@@ -2,6 +2,7 @@ package com.creative.full.cloudcontact;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,9 +32,10 @@ public class ContactUsServlet extends HttpServlet {
 		Entity contactus = null;
 		if (fname != null || email != null || message != null) {
 			contactus = new Entity("ContactUs", email);
-			contactus.setProperty("Full name", fname);
+			contactus.setProperty("FullName", fname);
 			contactus.setProperty("Email", email);
 			contactus.setProperty("Message", message);
+			contactus.setProperty("DateAndTime", new Date());
 			ds.put(contactus);
 			try {
 				Thread.sleep(1000);

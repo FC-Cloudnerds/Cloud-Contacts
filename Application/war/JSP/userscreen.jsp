@@ -41,7 +41,9 @@
 
 					<ul class="nav navbar-nav">
 						<li><a href="#">Welcome, <%
-							out.print(session.getAttribute("username"));
+							String name=session.getAttribute("username").toString();
+							name = name.toUpperCase();
+							out.print(name);
 						%></a></li>
 						<li class="active"><a href="">Home</a></li>
 						<li><a href="#modal1" data-toggle="modal">Change Password</a></li>

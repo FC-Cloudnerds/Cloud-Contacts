@@ -43,14 +43,14 @@ public class ResetPasswordServlet extends HttpServlet {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			resp.getWriter().println("<img src=\"../Resource/Image/successtick.png\" alt=\"successtick\" style=\"width: 5%\"><font color=\"green\"><b>Successfully password changed</b></font>");
+			resp.getWriter().println("<img src=\"../Resource/Image/successtick.png\" alt=\"successtick\" style=\"width: 5%\"><font color=\"green\"><b>Successfully your password has been changed</b></font>");
 		}else{
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			resp.getWriter().println("<font color=\"red\"><b>Please enter currect old password</b></font>");
+			resp.getWriter().println("<font color=\"red\"><b>Please enter correct old password</b></font>");
 		}
 	}
 }

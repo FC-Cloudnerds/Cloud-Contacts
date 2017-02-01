@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 				Entity e = ds.get(key);
 				dbemail = e.getProperty("Email").toString();
 				dbpass = e.getProperty("Password").toString();
-				username = (String) ds.get(key).getProperty("Full name");
+				username = (String) ds.get(key).getProperty("FullName");
 				if (email.toLowerCase().equals(dbemail.toLowerCase())) {
 					if (pass.equals(dbpass) == true) {
 						res.getWriter().print("success");

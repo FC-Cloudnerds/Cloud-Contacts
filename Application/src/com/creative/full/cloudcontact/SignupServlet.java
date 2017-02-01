@@ -39,11 +39,11 @@ public class SignupServlet extends HttpServlet {
 				res.getWriter().print("0");
 			} else {
 				Entity user = new Entity("User", email);
-				user.setProperty("Full name", fname);
+				user.setProperty("FullName", fname);
 				user.setProperty("Email", email);
-				user.setProperty("Mobile no", mno);
+				user.setProperty("MobileNo", mno);
 				user.setProperty("Password", password);
-				user.setProperty("Security que", sequ);
+				user.setProperty("SecurityQue", sequ);
 				user.setProperty("Answer", ans);
 
 				ds.put(user);

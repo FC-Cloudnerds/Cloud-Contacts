@@ -1,6 +1,5 @@
 package com.creative.full.cloudcontact;
 
-
 /*
  * *
  * 
@@ -19,7 +18,6 @@ import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
-
 public class ForgotPassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,31 +29,28 @@ public class ForgotPassServlet extends HttpServlet {
 		String dbemail, email, dbseq, ans, dbans, dbpass;
 		email = req.getParameter("txtemail");
 		ans = req.getParameter("txtanswer");
-		
-		
+
 		Key key = KeyFactory.createKey("User", email);
 
 		try {
-
-			Entity e = ds.get(key);
-			dbemail = e.getProperty("Email").toString();
-			dbseq = e.getProperty("Security que").toString();
-			dbans = e.getProperty("Answer").toString();
-			dbpass = e.getProperty("Password").toString();
-			if (ans != null) {
-				if (ans.equals(dbans) && email.equals(dbemail)) {
-					resp.getWriter().print("Password is : "+ dbpass);
+				Entity e = ds.get(key);
+				dbemail = e.getProperty("Email").toString();
+				dbseq = e.getProperty("SecurityQue").toString();
+				dbans = e.getProperty("Answer").toString();
+				dbpass = e.getProperty("Password").toString();
+				if (ans != null) {
+					if (ans.equals(dbans) && email.equals(dbemail)) {
+						resp.getWriter().print("Password is : " + dbpass);
+					} else {
+						resp.getWriter().print("Enter Correct Password");
+					}
+				} else {
+					if (email.equals(dbemail)) {
+						resp.getWriter().print(dbseq);
+					}
 				}
-				else{
-					resp.getWriter().print("Enter Correct Password");
-				}
-			} else {
-				if (email.equals(dbemail)) {
-					resp.getWriter().print(dbseq);
-				}
-			}
 		} catch (EntityNotFoundException e) {
-			e.printStackTrace();
+			resp.getWriter().print("0");
 		}
 	}
 
